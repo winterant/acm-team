@@ -17,6 +17,11 @@
 <body>
     <%@ include file="/template/header.jsp"%>
 
+    <%
+        SQL mysql=new SQL();
+        String sql="select * from news where id=1";
+        request.setAttribute("notice",mysql.queryFirst(sql));
+    %>
     <div class="bigContainer">
         <%--左侧概览区域--%>
         <%@include file="/template/homeLeftPage.jsp"%>
@@ -24,11 +29,6 @@
         <%-- 主页区域 --%>
         <div class="homeContainer">
             <div class="homeNotice homeRightMod">
-                <%
-                    SQL mysql=new SQL();
-                    String sql="select * from news where id=1";
-                    request.setAttribute("notice",mysql.queryFirst(sql));
-                %>
                 <div style="position: relative">
                     <h1 style="margin-left:15px;margin-bottom:0;color: #00b708">${notice.title}</h1>
                     <c:if test="${user!=null&&user.userMap.power>0}">

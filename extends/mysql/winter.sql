@@ -1,6 +1,23 @@
-﻿
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : winter
+Source Server Version : 50723
+Source Host           : localhost:3306
+Source Database       : winter
+
+Target Server Type    : MYSQL
+Target Server Version : 50723
+File Encoding         : 65001
+
+Date: 2018-12-24 14:38:37
+*/
+
 SET FOREIGN_KEY_CHECKS=0;
 
+-- ----------------------------
+-- Table structure for contests
+-- ----------------------------
 DROP TABLE IF EXISTS `contests`;
 CREATE TABLE `contests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,7 +30,9 @@ CREATE TABLE `contests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
-
+-- ----------------------------
+-- Table structure for files
+-- ----------------------------
 DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -25,8 +44,9 @@ CREATE TABLE `files` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
 
-
-
+-- ----------------------------
+-- Table structure for matches
+-- ----------------------------
 DROP TABLE IF EXISTS `matches`;
 CREATE TABLE `matches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -41,7 +61,9 @@ CREATE TABLE `matches` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
-
+-- ----------------------------
+-- Table structure for members
+-- ----------------------------
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -58,8 +80,9 @@ CREATE TABLE `members` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 
-
-
+-- ----------------------------
+-- Table structure for news
+-- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
@@ -72,8 +95,9 @@ CREATE TABLE `news` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
-
-
+-- ----------------------------
+-- Table structure for photoes
+-- ----------------------------
 DROP TABLE IF EXISTS `photoes`;
 CREATE TABLE `photoes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -86,8 +110,9 @@ CREATE TABLE `photoes` (
   CONSTRAINT `userName` FOREIGN KEY (`userName`) REFERENCES `users` (`userName`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
-
-
+-- ----------------------------
+-- Table structure for speaks
+-- ----------------------------
 DROP TABLE IF EXISTS `speaks`;
 CREATE TABLE `speaks` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
@@ -98,8 +123,9 @@ CREATE TABLE `speaks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
-
-
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(1) NOT NULL AUTO_INCREMENT,
@@ -127,4 +153,3 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`,`userName`),
   KEY `userName` (`userName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
-

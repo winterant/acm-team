@@ -17,7 +17,7 @@
         <li><a id="newsList" href="newsListPage.jsp">新闻列表</a> </li>
         <li><a id="memberList" href="membersListPage.jsp">成员列表</a></li>
         <li><a id="newsEditor" href="newsEditorPage.jsp">添加新闻</a> </li>
-        <li><a id="gongEditor" href="newsEditorPage.jsp?nid=1">编辑公告</a></li>
+        <li><a id="gongEditor" href="newsEditorPage.jsp?nid=1">编辑首页</a></li>
         <li><a id="dataUpdate" href="dataUpdatePage.jsp">数据更新</a></li>
     </ul>
 </div>

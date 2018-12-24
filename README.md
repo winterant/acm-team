@@ -17,10 +17,10 @@ ACM程序设计实验室管理网站（jsp）<br>
     数据库用户（localhost）：root
     数据库用户密码：iloveyou
   ## 数据库创建
-    /winter.sql
+    /src/Mysql/winter.sql
     
   ## tomcat8.5默认配置
-    请在tomcat/conf/server.xml中修改默认应用路径为本项目，否则项目中路径跳转出错。
+   请在**服务器**端tomcat/conf/server.xml中修改默认应用路径为本项目，否则项目中路径跳转出错。
   
   ## 项目所需的jar包
   全部在src/jar/* 备份
