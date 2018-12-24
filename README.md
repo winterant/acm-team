@@ -1,7 +1,7 @@
 # acm-team
 ACM程序设计实验室管理网站（jsp）<br>
-参观一下网站：http://ldu.winter2121.top
-服务器搭建参照：https://blog.csdn.net/winter2121/article/details/83308354
+参观一下网站：http://ldu.winter2121.top <br>
+服务器搭建参照：https://blog.csdn.net/winter2121/article/details/83308354 <br>
 
 # 主要模块
     新闻。编辑使用富文本编辑器wangeditor，git：https://github.com/wangfupeng1988/wangEditor
