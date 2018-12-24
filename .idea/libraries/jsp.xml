@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="jsp">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/jar/files" />
+      <root url="file://$PROJECT_DIR$/src/jar/htmlunit" />
+      <root url="file://$PROJECT_DIR$/src/jar/json" />
+      <root url="file://$PROJECT_DIR$/src/jar/jstl" />
+      <root url="file://$PROJECT_DIR$/src/jar/mysql" />
+      <root url="jar://$PROJECT_DIR$/src/jar/jsp-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/jar/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/jar/files" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/jar/htmlunit" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/jar/json" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/jar/jstl" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/jar/mysql" recursive="false" />
+  </library>
+</component>

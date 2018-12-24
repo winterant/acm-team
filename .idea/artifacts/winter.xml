@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="winter">
+    <output-path>$PROJECT_DIR$/out/artifacts/winter</output-path>
+    <root id="archive" name="winter.war">
+      <element id="artifact" artifact-name="winterJsp:war exploded" />
+    </root>
+  </artifact>
+</component>

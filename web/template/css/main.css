@@ -1,0 +1,830 @@
+/*****全局设置****/
+html{
+    height:100%;
+}
+body{
+    width:100%;
+    min-height: 100%;
+    position: relative;
+    margin:0px;
+    padding: 0px;
+
+    background-image: url("/images/background/StarSky.jpg");
+
+    background-size: 100%;
+    background-attachment: fixed;
+    /*上两句固定背景图片*/
+
+    /*滚动条不要消失哦*/
+    overflow:auto!important;
+}
+
+a{
+    color: #4e7ef1;
+}
+a:link{
+    text-decoration:none
+}
+a:hover{
+    color: #ffbc00;
+}
+
+
+.colorTest{
+    color: #b1e8f8;
+}
+
+/*****  页面大容器  **/
+.bigContainer{
+    width:80%;
+    min-width: 900px;
+    max-width: 1200px;
+
+    margin: 6px auto;
+    /*background-image: url("/images/background/background.jpg");*/
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden; /*** 子元素浮动（float）后，父元素无法撑开，用这个解决*****/
+    /*box-shadow: 0px 4px 6px 0px rgba(8, 8, 7, 0.2);*/
+}
+
+
+
+
+/*****  各种信息表的css ****/
+.table-list{
+    width:90%;
+    margin: auto;
+    border-collapse: collapse;
+    overflow: auto;
+}
+.table-list th a{
+    color: #000000;
+}
+.table-list tr{
+    border-bottom: 1px solid #bdbdbd;
+}
+.table-list tr:hover{
+    background-color: #e1e1e1;
+}
+.table-list tr td{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+/****** 登录注册等表格 ******/
+.login-block{
+    width: 50%;
+    min-width: 300px;
+    border: 1px solid #d4d4d4;
+    border-radius: 7px;
+    margin: 0 auto;
+    background: #fff;
+}
+.login-block .tit{
+    width: 12%;
+    text-align: right;
+    display: inline-block;
+    margin-right: 3%;
+    vertical-align: middle;
+    font-size: 1.1em;
+    color: #6b6b6b;
+}
+.login-block input.txt{
+    width: 220px;
+    border: 0;
+    height: 32px;
+    line-height: 27px;
+    vertical-align: middle;
+    padding-left: 2%;
+    color: #666;
+    -webkit-appearance: none;
+    background-color: transparent;
+    font-size: 1.1em;
+    outline: none;
+}
+
+
+.table-input-info{
+    width: 50%;
+    min-width: 400px;
+}
+.table-input-info tr{
+    height:25px;
+    width: 80%;
+}
+.table-input-info tr td{
+    padding: 1%;
+}
+.table-input-info input{
+    height:35px;
+    width: 100%;
+    border-radius: 4px;
+    padding-left:1%;
+}
+.table-input-info select{
+    height:35px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.table-input-info textarea{
+    font-size: 1.05em;
+    width: 100%;
+    height: 50px;
+}
+
+.btnSubmit{
+    height:35px;
+    min-width: 300px;
+    margin: 1%;
+    border: 1px solid #7f7f7f;
+    border-radius: 4px;
+    background-color: #ecf5ff;
+    cursor: pointer;
+}
+.td1{
+    width: 15%;
+    min-width: 150px;
+    text-align: right;
+}
+
+
+
+/*****文本超出显示省略号*****/
+.line-limit-length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /**文本不换行，这样超出一行的部分被截取，显示...**/
+}
+
+.line-limit-length a:link{
+    text-decoration:none;
+}
+
+
+/**** 按钮 ****/
+.form-control-input {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-control {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-control:hover{
+    background: #ff1100;
+    color: white;
+    cursor: pointer;
+}
+
+
+/******* 行奇偶变换 ***/
+.rowOdd{
+    background-color: white;
+    text-align: center;
+}
+.rowEven{
+    background-color: #d8d8d7;
+    text-align: center;
+}
+
+
+
+
+/****  头部  ****/
+#headContainer{
+    background-color: #3d444c;
+    min-width: 900px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+#headContainer a{
+    color: white;
+    display: block;
+}
+/*头部大区域的容器nav*/
+#head-nav{
+    width: 80%;
+    min-width: 850px;
+    max-width: 1200px;
+    height: 50px;
+    margin:0px auto;
+    overflow: hidden;
+}
+#head-nav ul{
+    margin: 0px;
+    list-style-type:none;
+    padding-left: 0;
+    z-index: 5;
+}
+/*标题*/
+#head-title{
+    float: left;
+    width:10%;
+    min-width: 85px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/*****菜单按钮*****/
+#head-menu-btn{
+    display: none;
+}
+
+/*大菜单*/
+#head-menu{
+    float: left;
+    text-align: center;
+    list-style-type:none;
+    margin-top :7px;
+}
+#head-menu li{
+    min-width:100px;
+    width: 14%;
+    float: left;
+    height: 36px;
+}
+#head-menu li a{
+    color: white;
+    line-height: 36px;
+}
+#head-menu li a:hover{
+    color: #d6d2d2;
+}
+
+/*登录模块*/
+#login-menu{
+    width:10%;
+    min-width: 85px;
+    float: right;
+    margin-top: 14px;
+    text-align: center;
+    /*display: block;*/
+}
+#btnlogin{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#btnlogin li{
+    list-style-type: none;
+    float: left;
+    width: 50%;
+}
+
+/** 下拉菜单使用：https://c.runoob.com/codedemo/3180  **/
+/*已登录的下拉菜单按钮*/
+.dropbtnUserInfo {
+    color: white;
+    background-color: #3d444c;
+    border: 0;
+    padding: 8px 15px 8px 15px;
+    cursor: pointer;
+}
+
+/*下拉菜单元素的样式*/
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    width: 8%;
+    min-width: 90px;
+    text-align: center;
+    margin-top: 4px;
+    overflow: hidden;
+    /*box-shadow: 6px 6px 26px 10px rgba(0, 0, 0, 0.2);*/
+    /*z-index: 1;*/
+}
+#user-dropdown-menu{
+    background-color: #3d444c;
+}
+#user-dropdown-menu a{
+    padding: 8px 13px;
+    color: #fbfff9;
+}
+#user-dropdown-menu a:hover{
+    color: #c4c0c0;
+}
+
+/*span三角形小图标*/
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+
+
+/**** 底部样式 ****/
+#footContainer{
+    position: absolute;
+    bottom: 0;
+    background-color: #3d444c;
+    width: 100%;
+    min-width: 900px;
+    text-align: center;
+    overflow: hidden;
+}
+#footContainer a{
+    color: white;
+}
+/********* loginPage.jsp登录页面 *****/
+
+
+
+/**** index.jsp  *****/
+.homeLeft{
+    width:19%;
+    margin-left: 0.5%;
+    padding: 0.5% 0 0.5% 0%;
+    border-radius: 4px;
+    /*text-align: center;*/
+    float: left;
+    /*box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);*/
+
+}
+
+.item-left-block{
+    border: #b7b9c1 solid 1px;
+    border-radius: 5px;
+    padding: 1px;
+    margin-top: 16px;
+}
+
+.item-left-block p a{
+
+}
+.item-left-block a:link{
+    text-decoration:none;
+}
+
+/**** index.jsp右侧大区域 ****/
+.homeContainer{
+    width:78.5%;
+    float: left;
+    margin: 0.7%;
+    /*text-align: center;*/
+    overflow: hidden;
+}
+
+.homeRightMod{
+    border-radius: 4px;
+    padding-bottom: 20px;
+    border:  1px solid #b7b9c1;
+    /*box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.2);*/
+}
+.homeNotice{
+    font-size: 0.9em;
+}
+
+.newsContainer{
+    font-size: 0.9em;
+}
+
+/*********newsListPage.jsp*********/
+.mainText{
+    width: 90%;
+    margin: 10px auto;
+}
+.newsTitle{
+    margin:8px auto;
+    width:65%;
+    float: left;
+    font-size: 0.9em;
+}
+.newsTitle a{
+    padding-left: 5px;
+    color: #000000;
+    list-style: circle;
+}
+.newsTitle a:hover{
+    color: #ffbc00;
+}
+.newsInfo{
+    margin: 0;
+    font-size: 0.8em;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
+
+/***********gradePage.jsp**********/
+.match-list{
+    width: 90%;
+    margin:10px auto;
+}
+/*奖牌信息的div*/
+.prizeInfo{
+    display: none;
+    /*background-color: white;*/
+    position:absolute;
+    white-space: nowrap;
+    padding-left: 2px;
+}
+.bg-gold{
+    background-color: #fffe45;
+    border-radius: 4px;
+}
+.bg-silver{
+    background-color: #d9d9d9;
+    border-radius: 4px;
+}
+.bg-bronze{
+    background-color: #f3c03d;
+    border-radius: 4px;
+}
+
+/******* study.jsp ******/
+.item-study{
+    display: none;
+    width: 30%;
+    margin: 1.5%;
+    /*background-color: #00bdc4;*/
+    float: left;
+    position: relative;
+    height: 300px;
+    border: 1px solid #7f7f7f;
+}
+
+
+
+/*** recentContestPage.jsp ****/
+
+.modal-overlay{
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height: 100%;
+    text-align:center;
+    z-index: 1000;
+    /*background-color: #333;*/
+    /*opacity: 0.5;   !* 背景半透明 *!*/
+    background-color:rgba(0,0,0,0.5)
+}
+/*添加竞赛的窗口*/
+.modal-main{
+    display: none;
+    width:40%;
+    min-width: 500px;
+    margin:70px auto;
+    background-color: #ffffff;
+    border:1px solid #8c8c8c;
+    border-radius: 6px;
+    padding:10px;
+    text-align:center;
+    z-index: 1100;
+    opacity: 1;
+}
+.close {
+    float: right;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+}
+
+
+/*竞赛的未开始和已结束的菜单*/
+.right-head-menu{
+    width: 14%;
+    min-width: 210px;
+    float: left;
+    /*position: absolute;*/
+    text-align: center;
+    overflow: hidden;
+    /*margin: 6px auto;*/
+    white-space: nowrap;
+}
+.right-head-menu-click{
+    width: 99%;
+    overflow: hidden;
+    border: 1px solid #8c8c8c;
+    border-radius: 4px;
+}
+
+
+.right-head-menu li{
+    width: 50%;
+    float: left;
+    display: inline;
+    list-style: none;
+}
+.right-head-menu li a{
+    display: block;
+    width: 100%;
+    line-height: 195%;
+}
+
+#platformSelect{
+    height: 32px;
+    /*padding: 6px 12px;*/
+    /*font-size: 14px;*/
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.selectStyle{
+    height: 32px;
+    /*padding: 6px 12px;*/
+    /*font-size: 14px;*/
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#platformSelect option{
+
+}
+
+.table-contest{
+    width: 100%;
+    border-collapse: collapse;
+    /*加了这句，就可以体现出tr的border了*/
+}
+.table-contest th{
+    padding-left: 1%;
+}
+.table-contest tr{
+    border-bottom: 1px solid #7f7f7f;
+    font-size: 0.9em;
+}
+.table-contest tr:hover{
+    background-color: #e6e6e6;
+}
+.table-contest tr td{
+    padding: 1%;
+}
+.table-contest tr td li{
+    list-style: none;
+}
+
+
+/****rankPage.jsp****/
+.userInfo{
+    display: none;
+    color: black;
+    position: absolute;
+    margin-left: 350px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #7f807c;
+    border-radius: 5px;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.rank-list{
+    /*border: 1px solid #b7b9c1;*/
+    /*border-radius: 4px;*/
+    overflow: auto;
+}
+
+.rankBottomInfo{
+    width: 20%;
+    float: left;
+    margin: 5%;
+}
+.user-color0{
+    color: gray;
+}
+.user-color1{
+    color: black;
+}
+.user-color2{
+    color: brown;
+}
+.user-color3{
+    color: green;
+}
+.user-color4{
+    color: blue;
+}
+.user-color5{
+    color: purple;
+}
+.user-color6{
+    color: orange;
+}
+.user-color7{
+    color: red;
+}
+
+
+
+
+
+/*********membersPage.jsp***********/
+.members-div{
+    /*border: 1px solid #b7b9c1;*/
+    border-radius: 4px;
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+.members-list{
+    width: 80%;
+    margin:0 auto;
+}
+.table-members{
+    width: 100%;
+    border-collapse: collapse;
+    /*加了这句，就可以体现出tr的border了*/
+}
+.table-members th{
+    padding-left: 1%;
+}
+.table-members tr{
+    border-bottom: 1px solid #7f7f7f;
+    font-size: 0.9em;
+}
+.table-members tr:hover{
+    background-color: #e6e6e6;
+}
+.table-members tr td{
+    padding: 1%;
+}
+
+
+
+
+/******profilePage.jsp******/
+.userProfile{
+    padding: 10px;
+    width:94%;
+    border-radius: 4px;
+    margin: 0px auto;
+    padding: 2%;
+    overflow: hidden;
+}
+#userInfo{
+    float: left;
+    width: 60%;
+}
+.someInfo{
+    padding: 4px;
+}
+
+#photo-div{
+    width:30%;
+    float: left;
+    margin: 0 4%;
+    /*background-color: #65cbff;*/
+    border: 1px solid #7f7f7f;
+    border-radius: 4px;
+    overflow: hidden;
+}
+#photo{
+    width: 90%;
+    margin: 6% auto;
+    text-align: center;
+}
+
+
+
+/**** 按条件查找 区域元素*****/
+.search{
+    text-align: center;
+    margin: 6px auto;
+    white-space: nowrap;
+}
+
+/*** 翻页小功能 ****/
+.pagingContainer{
+    text-align: center;
+    margin: 6px auto;
+}
+.paging{
+    display: inline-block;
+    padding: 0;
+}
+.paging li{
+    display: inline;
+}
+.paging a{
+    position: relative;
+    float: left;
+    padding: 5px 10px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #87a9a9;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.paging a:hover{
+    background: #c6c7cc;
+}
+
+
+
+
+/****** 管理员页面 --*****/
+#manager-left-menu{
+    width:19%;
+    margin-left: 0.5%;
+    padding: 0.5% 0 0.5% 0%;
+    border-radius: 4px;
+    text-align: center;
+    float: left;
+    box-shadow: 2px 6px 6px 0px rgba(0, 0, 0, 0.2);
+
+}
+#manager-left-menu ul{
+    margin: 0px;
+    list-style-type: none;
+    padding-left: 0;
+}
+#titleManage{
+    text-align: center;
+}
+
+#manager-left-menu ul li{
+    height:40px;
+    list-style-type: none;
+}
+#manager-left-menu ul li a{
+    display: flex;
+    display: block; ;
+    line-height:40px;
+    justify-content: center;
+    align-items: center;
+}
+#manager-left-menu ul li a:hover{
+    background-color: #d8d8d7;
+    color: #ff0808;
+}
+.adminRightArea{
+    width:78.5%;
+    float: left;
+    padding: 1%;
+    text-align: center;
+}
+
+/*****新闻添加页面 ***/
+#txtTitle {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    border: none;
+    background-color: #efefef;
+    color: #4f4f4f;
+    font-size:20px;
+}
+
+/*.w-e-text-container{*/
+    /*height: 500px !important;*/
+/*}*/
+#cbox{
+    margin: 0;
+    zoom:150%;
+    vertical-align: bottom;
+}
+
+.leftSmallTitle{
+    padding:1% 0;
+    font-weight: bold;
+    float: left;
+}
+
+/*强制不换行*/
+.oneline{
+    white-space: nowrap;
+}
+/*js下拉菜单显示与隐藏，一定要放在最后！*/
+.show {display:block;}
+.hide {display: none;}
+
+
+.ulstyleNone{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
