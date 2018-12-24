@@ -1,5 +1,6 @@
 <%@ page import="Mysql.SQL" %>
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="Tools.FilePath" %><%--
   Created by IntelliJ IDEA.
   User: winter
   Date: 2018/12/17
@@ -22,6 +23,7 @@
         if(userTemp!=null&&userTemp.getInt("power")>0&&!member.isEmpty()){
             //编辑
             request.setAttribute("edi",true);
+            member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),"/images/smallPic/defaultphoto.jpg"));
             request.setAttribute("member",member);
         }else{
             request.setAttribute("edi",false);
@@ -45,7 +47,7 @@
                     <tr>
                         <td class="td1">*姓名：</td>
                         <td>
-                            <input type="text" name="name" size="16"/>
+                            <input type="text" name="name" size="16" maxlength="10"/>
                             <input type="text" name="mid" hidden>
                         </td>
                     </tr>
@@ -81,7 +83,7 @@
                         <td class="td1">照片：</td>
                         <td>
                             <div style="width: 30%;cursor: pointer;" id="showMemberPhoto" onclick="$('#memberPhoto').click()" title="更换照片">
-                                <img id="memberImg" width="100%" src="/ServletLoad?type=memberPhoto&mid=${member.id}" alt="">
+                                <img id="memberImg" width="100%" src="/images/smallPic/defaultphoto.jpg" alt="">
                             </div>
                             <input id="fileid" type="text" name="fileid" hidden>
                             <input id="memberPhoto" type="file" name="photo" onchange="memberAddPhoto()" hidden>
@@ -140,6 +142,7 @@
         //introduce
         editor.txt.html("${member.introduce}")
         $('input[name=fileid]').val('${member.photo}')
+        $('#memberImg').attr("src","${member.photoPath}");
     }
 
 
@@ -201,7 +204,7 @@
                 if(ret['result']){
                     alert("照片上传成功");
                     $('#fileid').val(ret.fileid);
-                    document.getElementById("memberImg").setAttribute("src","/ServletLoad?type=memberPhoto&fileid="+ret.fileid)
+                    document.getElementById("memberImg").setAttribute("src",ret.path);
                 }else{
                     alert(ret['msg']);
                 }

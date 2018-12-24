@@ -1,6 +1,7 @@
 <%@ page import="Tools.UserColor" %>
 <%@ page import="Mysql.SQL" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="Tools.FilePath" %>
 <%--
   Created by IntelliJ IDEA.
   User: winter
@@ -80,18 +81,14 @@
             <%--begin of user photo--%>
             <div id="photo-div">
                 <div id="photo">
-                    <img width="100%" src="/ServletLoad?type=photo&userName=<%=userInfo.getString("userName")%>" alt="<%=userInfo.getString("userName")%>">
+                    <img id="userPhoto" width="100%" src="<%=FilePath.getPhotoPath(userInfo.getString("userName"))%>" alt="<%=userInfo.getString("userName")%>">
                 </div>
-                <%
-                    if(userInfo.equals(userTemp)){
-                %>
+                <% if(userInfo.equals(userTemp)){ %>
                     <div style="width: 60%;text-align: center;margin: 2% auto;">
                         <input id="myphoto" type="file" name="pic" onchange="uploadFiles('myphoto','photo')" hidden>
                         <button type="button" onclick="$('#myphoto').click();">更换</button>
                     </div>
-                <%
-                    }
-                %>
+                <% } %>
             </div>
             <%--end of user photo--%>
 

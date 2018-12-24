@@ -1,5 +1,6 @@
 <%@ page import="Mysql.SQL" %>
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="Tools.FilePath" %><%--
   Created by IntelliJ IDEA.
   User: winter
   Date: 2018/12/20
@@ -18,11 +19,12 @@
     <%
         String midStr=request.getParameter("mid");
         SQL mysql=new SQL();
-        Object member=mysql.queryFirst("select * from members where id="+midStr);
-        if(member==null||((Map)member).isEmpty()){
+        Map member=mysql.queryFirst("select * from members where id="+midStr);
+        if(member==null||(member).isEmpty()){
             response.sendRedirect("/");
             return;
         }
+        member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),"/images/smallPic/defaultphoto.jpg"));
         request.setAttribute("member",member);
     %>
 
@@ -45,7 +47,7 @@
                 </div>
 
                 <div class="someInfo">
-                    <font>blog: <a href="${member.blog}" target="_blank">${member.blog}</a></font>
+                    <font>blog: <a href="${fn:indexOf(member.blog,'http')!=-1?member.blog:'javascript:void(0)'}" target="_blank">${member.blog}</a></font>
                 </div>
                 <div class="someInfo">
                     <font>email: ${member.email}</font>
@@ -60,7 +62,7 @@
             <%--begin of user photo--%>
             <div id="photo-div">
                 <div id="photo">
-                    <img width="100%" src="/ServletLoad?type=memberPhoto&mid=${member.id}" alt="">
+                    <img width="100%" src="${member.photoPath}" alt="图片加载失败">
                 </div>
             </div>
             <%--end of user photo--%>

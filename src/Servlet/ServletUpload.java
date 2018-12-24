@@ -71,30 +71,27 @@ public class ServletUpload extends HttpServlet {
                 // 处理不在表单中的字段，即文件
                 if (!item.isFormField()) {
                     String fileName = item.getName(); //获取上传的文件名
-                    String path = getUploadDir(request)+type;//定义上传文件的存放路径
-                    String fileSaveName=getSaveName(request,fileName);//定义上传文件的文件名
+                    String path="/upload/"+type+"/"+getSaveName(request,fileName);//上传文件的存放路径
 
-                    String filePath = String.format("%s/%s",path,fileSaveName);//文件完整绝对路径
-                    File storeFile = new File(filePath);
+                    String realPath = getUploadHome(request)+path;//文件完整绝对路径
+                    File storeFile = new File(realPath);
                     //如果父目录不存在，就创建他
                     if(!storeFile.getParentFile().exists()){
                         storeFile.getParentFile().mkdirs();
                     }
-                    System.out.println(filePath);// 在控制台输出文件的上传路径
+                    System.out.println(realPath);// 在控制台输出文件的上传路径
                     item.write(storeFile);// 保存文件到硬盘
-
-
 
                     //下面把这个文件路径插入数据库 表files
                     SQL mysql=new SQL();
                     String sql=String.format("insert into files(realName,path,author,time,type) " +
-                            "values('%s','%s','%s','%s',%d)",fileName,filePath.substring(filePath.indexOf("/winterUpload")),user==null?"匿名":user.getString("userName"),
+                            "values('%s','%s','%s','%s',%d)",fileName,path,user==null?"匿名":user.getString("userName"),
                             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),0);
 
                     if(mysql.update(sql)>0){
                         System.out.println("files成功插入一个文件");
                         id= (int) mysql.queryFirst("select max(id) id from files").get("id");
-                    };
+                    }
 
 
 
@@ -106,18 +103,20 @@ public class ServletUpload extends HttpServlet {
                         if(mysql.update(sql)>0){
                             System.out.println("设为头像成功.");
                         }
+                        ret.put("path",path);
                     }
 
 
                     if("newsImg".equals(type)){
                         ret.put("errno",0);
                         JSONArray arr=new JSONArray();
-                        arr.put("/ServletLoad?type=newsImg&fileid="+id); //通过servlet读取图片
+                        arr.put(path); //添加新闻图片，给前台返回图片地址
                         ret.put("data",arr);
                     }
 
                     if("memberPhoto".equals(type)){
                         ret.put("fileid",id);
+                        ret.put("path",path);
                     }
 
                     mysql.close(); //关闭数据库连接
@@ -136,24 +135,25 @@ public class ServletUpload extends HttpServlet {
     }
 
 
-    private String getUploadDir(HttpServletRequest request){
+    private String getUploadHome(HttpServletRequest request){
+        //获取上传文件的父目录的绝对路径，通俗的说就是upload目录放在哪
+        //默认放在项目的父目录下，与项目是兄弟
+        //下面改为false，则父目录为本项目web
         String path = request.getServletContext().getRealPath("");
-        path=path.replace("\\","/");//一定要加上，不然路径在插入数据库时会出错
-        path=path.substring(0,path.length()-1);
-        path=path.substring(0,path.lastIndexOf("/"));
-        path+="/winterUpload/";
+        if(true){
+            path=path.replace("\\","/");//一定要加上，不然路径在插入数据库时会出错
+            path=path.substring(0,path.length()-1);
+            path=path.substring(0,path.lastIndexOf("/"));
+        }
         return path; //返回的路径是与项目文件夹同级别的目录
     }
     private String getSaveName(HttpServletRequest request,String fileName){
         //生成一个文件名
-        String fileType=fileName.substring(fileName.lastIndexOf(".")+1); //获取后缀
-
+        String fileType=fileName.substring(fileName.lastIndexOf(".")); //获取后缀
+        String fileSaveName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()).toString();
+        fileSaveName+="_"+new Date().getTime();
         User user= (User) request.getSession().getAttribute("user");
-        String fileSaveName="";
-        if(user!=null)fileSaveName+=user.getString("userName");
-        fileSaveName+= new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()).toString();
-        Random random=new Random();
-        fileSaveName+="_"+random.nextInt(10000)+"."+fileType; //后缀
-        return fileSaveName;
+        if(user!=null)fileSaveName+="_"+user.getString("userName");
+        return fileSaveName+fileType; //+后缀
     }
 }

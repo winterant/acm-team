@@ -458,7 +458,10 @@ function uploadFiles(inputid,type) {
         success:function (ret) {
             console.log(ret)
             if(ret['result']){
-                window.location.reload();
+                if(type=="photo"){
+                    $('#userPhoto').attr("src",ret.path);
+                }else
+                    window.location.reload();
             }else{
                 alert(ret['msg']);
             }

@@ -207,7 +207,7 @@ a:hover{
 
 /****  头部  ****/
 #headContainer{
-    background-color: #3d444c;
+    background-color: black;
     min-width: 900px;
     margin: 0px auto;
     overflow: hidden;
@@ -292,7 +292,7 @@ a:hover{
 /*已登录的下拉菜单按钮*/
 .dropbtnUserInfo {
     color: white;
-    background-color: #3d444c;
+    background-color: black;
     border: 0;
     padding: 8px 15px 8px 15px;
     cursor: pointer;
@@ -311,7 +311,7 @@ a:hover{
     /*z-index: 1;*/
 }
 #user-dropdown-menu{
-    background-color: #3d444c;
+    background-color: black;
 }
 #user-dropdown-menu a{
     padding: 8px 13px;
@@ -339,7 +339,7 @@ a:hover{
 #footContainer{
     position: absolute;
     bottom: 0;
-    background-color: #3d444c;
+    background-color: black;
     width: 100%;
     min-width: 900px;
     text-align: center;
@@ -628,7 +628,7 @@ a:hover{
     color: purple;
 }
 .user-color6{
-    color: orange;
+    color: #ff7700;
 }
 .user-color7{
     color: red;

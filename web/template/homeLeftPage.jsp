@@ -111,7 +111,7 @@
             <div id="dropShowSpeaks" class="dropShowSTH">
                 <hr style="margin:0;">
                 <div style="overflow: hidden;margin-bottom: 3px;">
-                    <textarea id="saySth" style="width:97%;height: 70px;" maxlength="50" placeholder="说点什么吧...50字以内"></textarea>
+                    <textarea id="saySth" style="width:97%;height: 70px;" maxlength="50" placeholder="留下您的宝贵建议吧.."></textarea>
                     <c:if test="${user==null}">
                         <input id="authorName" style="float:left;width: 70%;margin-top: 4px" placeholder="留下你的名字吧">
                     </c:if>

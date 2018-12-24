@@ -32,6 +32,7 @@
                 String strPage=request.getParameter("nowPage");
                 int nowPage= Changing.strToNumber(strPage,1); //检查是否指定页数
                 Paging paging=new Paging("members");
+                paging.setOrder("identity",1);
                 paging.setOrder("grade",1);
                 paging.addVague("name",keyWords);  //模糊查询
                 paging.addVague("grade",keyWords);

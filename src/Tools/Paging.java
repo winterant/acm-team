@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Paging {
     private int dataRowCount; //数据总条数
@@ -19,8 +17,9 @@ public class Paging {
     private int pageNumberCount=4; //当前页两侧分别显示的页码标签数
 
     private String dataTable; //数据表名
-    private String orderCol; //排序依据列
-    private int orderWay; //排序规则0升序1降序
+
+    private List<String> orderCol; //排序依据列
+    private List<Integer> orderWay; //排序规则0升序1降序
 
     private Map<String,String> vague=new HashMap<>(); //设置模糊查询 列名->模糊查找的串
     private Map<String,String> exact=new HashMap<>(); //设置精确查找 列名->精确值
@@ -32,8 +31,8 @@ public class Paging {
         this.dataTable=dataTable;
         this.pageSize=50;  //默认每页50条记录!
         this.nowPage=1;
-        this.orderCol=null;
-        this.orderWay=0; //默认0升序
+        this.orderCol=new ArrayList<>();
+        this.orderWay=new ArrayList<>();
         //computePage();
     }
 
@@ -119,8 +118,9 @@ public class Paging {
             sql+=")";
         }
 
-        if(orderCol!=null) {
-            sql += " order by " + orderCol + (orderWay == 0 ? " ASC" : " DESC");
+        for(int i=0;i<orderCol.size();i++){
+            sql+=(i==0?" order by ":",")+ orderCol.get(i) +
+                    (orderWay.get(i) == 0 ? " ASC" : " DESC");
         }
         sql+=String .format(" limit %d,%d",(nowPage-1)*pageSize,pageSize);
     }
@@ -180,8 +180,8 @@ public class Paging {
     }   //获取最大页码
     public int getIndexPage(){return indexPage;}    //获取首页页码
     public void setOrder(String orderCol,int orderWay) {   //设置排序依据,根据orderCol列按orderWay=0升序，1降序
-        this.orderCol=orderCol;
-        this.orderWay=orderWay;
+        this.orderCol.add(orderCol);
+        this.orderWay.add(orderWay);
     }
     public String getSql(){
         constructSql();
