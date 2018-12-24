@@ -21,6 +21,7 @@ ACM程序设计实验室管理网站（jsp）<br>
     
   ## tomcat8.5默认配置
    请在**服务器**端tomcat/conf/server.xml中修改默认应用路径为本项目，否则项目中路径跳转出错。
+   必须配置虚拟路径，upload用于文件上传：
   
   ## 项目所需的jar包
   全部在/extends/jar/* 备份
@@ -41,7 +42,6 @@ ACM程序设计实验室管理网站（jsp）<br>
   ## 文件上传
     使用外部jar：/src/jar/files/*
     servlet：/src/Servlet/ServletUpload
-    文件上传位置：自动创建与项目根目录同级的目录winterUpload/（注意此目录不在web内，而是同级）
-    文件读取servlet：/src/Servlet/ServletLoad
+    文件上传位置：自动创建与项目根目录同级的目录upload/（注意此目录不在web内，而是同级，因此tomcat必须配置虚拟路径才能在前端访问到）
   
   
