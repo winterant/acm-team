@@ -17,13 +17,13 @@ ACM程序设计实验室管理网站（jsp）<br>
     数据库用户（localhost）：root
     数据库用户密码：iloveyou
   ## 数据库创建
-    /src/Mysql/winter.sql
+    /extends/mysql/winter.sql
     
   ## tomcat8.5默认配置
    请在**服务器**端tomcat/conf/server.xml中修改默认应用路径为本项目，否则项目中路径跳转出错。
   
   ## 项目所需的jar包
-  全部在src/jar/* 备份
+  全部在/extends/jar/* 备份
   
   ## htmlunit爬虫
   java代码位于/src/Reptile/*，主类HtmlunitURL.java使用htmlunit，其他类继承自HtmlunitURL
@@ -41,7 +41,7 @@ ACM程序设计实验室管理网站（jsp）<br>
   ## 文件上传
     使用外部jar：/src/jar/files/*
     servlet：/src/Servlet/ServletUpload
-    文件上传位置：自动创建与项目同级的目录winterUpload/
+    文件上传位置：自动创建与项目根目录同级的目录winterUpload/（注意此目录不在web内，而是同级）
     文件读取servlet：/src/Servlet/ServletLoad
   
   
