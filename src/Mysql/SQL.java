@@ -1,5 +1,4 @@
 package Mysql;
-//import org.apache.jasper.JasperException;
 
 import java.sql.*;
 import java.util.*;

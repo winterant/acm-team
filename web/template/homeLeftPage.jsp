@@ -34,7 +34,7 @@
         <div class="item-left-block">
             <div style="overflow:hidden;">
                 <div class="leftSmallTitle" onmousemove="prizeDisplay(<%=matchName.length%>,0)" onmouseleave="prizeDisplay(<%=matchName.length%>,1)">
-                    <a href="/second/gradePage.jsp" style="color: #ff4a00">鲁东大学ACM战绩</a>
+                    <a href="/second/gradePage.jsp" class="user-color6"><%=teamName%>ACM战绩</a>
                 </div>
                 <%--<div style="float: right;"><a href="/second/#" style="font-size: 0.7em;">更多..</a></div>--%>
             </div>
