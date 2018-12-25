@@ -26,14 +26,18 @@ import java.sql.SQLException;
 public class ServletUser extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        work(request,response);
+        try {
+            work(request,response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
 
-    private void work(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+    private void work(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, JSONException {
         String type=request.getParameter("type");
         if("login".equals(type)){
             login(request,response);
@@ -106,7 +110,7 @@ public class ServletUser extends HttpServlet {
         response.getWriter().print("{\"result\":true}");
     }
 
-    private void register(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException {
+    private void register(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, JSONException {
 
         request.setCharacterEncoding("UTF-8");
         String userName = request.getParameter("userName");
@@ -133,49 +137,38 @@ public class ServletUser extends HttpServlet {
         blog=Changing.strTransfer(blog);
 
         JSONObject ret=new JSONObject();
-        try {
-            ret.put("result",false);
-            User regUser=new User(userName);
-            if(userName.length()<4||userName.length()>16||password1.length()<4||password1.length()>16||password2.length()<4){
-                ret.put("msg","账号或密码的长度必须介于4~16");  //账号密码不能短于4个字符
-                ret.put("flag",1);
-            }else if(!password1.equals(password2)){
-                ret.put("msg","两次输入密码不一致");  //两密码不一致
-                ret.put("flag",2);
-            }else if(regUser.isExist()){
-                ret.put("msg","用户名已存在，请更换");  //账号已存在
-                ret.put("flag",3);
-            }else{
-                SQL mysql=new SQL();
-                String sql="select MAX(id) id from users";
-                ResultSet res=mysql.queryRS(sql);
-                int id=0;
-                if(res!=null&&res.next()){
-                    id=res.getInt(1)+1;
+
+        ret.put("result",false);
+        User regUser=new User(userName);
+        if(userName.length()<4||userName.length()>16||password1.length()<4||password1.length()>16||password2.length()<4){
+            ret.put("msg","账号或密码的长度必须介于4~16");  //账号密码不能短于4个字符
+            ret.put("flag",1);
+        }else if(!password1.equals(password2)){
+            ret.put("msg","两次输入密码不一致");  //两密码不一致
+            ret.put("flag",2);
+        }else if(regUser.isExist()){
+            ret.put("msg","用户名已存在，请更换");  //账号已存在
+            ret.put("flag",3);
+        }else{
+            SQL mysql=new SQL();
+            //此处插入有待优化
+            String sql = "insert into users(userName,password,nickName,className,school,email,motto,blog,codeforcesid,newcoderid,atcoderid,vjudgeid,upcojid)";
+            sql+=" values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
+            sql= String.format(sql,userName,User.encode(password1),nickName,className,school,email,motto,
+                    blog,codeforcesid,newcoderid,atcoderid,vjudgeid,upcojid);
+            System.out.println(sql);
+            if(mysql.update(sql)==0) {
+                ret.put("msg","数据库更新失败，请稍后重试"); //注册失败
+                ret.put("flag",4);
+            }else {
+                //插入数据库成功，注册成功
+                if(loginSession(request,userName)){
+                    ret.put("result",true);
+                    ret.put("msg","注册成功！");
+                    ret.put("flag",0);
                 }
-                //此处插入有待优化
-                sql="insert into users(id,userName,password,nickName,className,school,email,motto,blog,codeforcesid,newcoderid,atcoderid,vjudgeid,upcojid)";
-                sql+=" values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')";
-                sql= String.format(sql,id,userName,User.encode(password1),nickName,className,school,email,motto,
-                        blog,codeforcesid,newcoderid,atcoderid,vjudgeid,upcojid);
-                System.out.println(sql);
-                if(id==0||mysql.update(sql)==0) {
-                    ret.put("msg","数据库更新失败，请稍后重试"); //注册失败
-                    ret.put("flag",4);
-                }else {
-                    //插入数据库成功，注册成功
-                    if(loginSession(request,userName)){
-                        ret.put("result",true);
-                        ret.put("msg","注册成功！");
-                        ret.put("flag",0);
-                    }
-                }
-                mysql.close();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+            mysql.close();
         }
 
         response.setContentType("text/html;charset=utf-8");

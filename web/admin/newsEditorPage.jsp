@@ -25,17 +25,12 @@
             response.sendRedirect("/"); //不是管理员将被送回主页
             return;
         }
-        int nid= Changing.strToNumber(request.getParameter("nid"),0); //在编辑
-        boolean isNew=nid==0;
+        int nid= Changing.strToNumber(request.getParameter("nid"),0);
+        boolean isNew=nid==0;    //添加数据
         request.setAttribute("isNew",isNew);
         Map<String,Object> newsMap=null;
         String titleStr="",mainTextStr="";
-        if(isNew) //新的新闻
-        {
-            SQL mysql=new SQL();
-            Map<String,Object> mres=mysql.queryFirst("select MAX(id) id from news");
-            nid= 1 + (int) mres.get("id");
-        }else{
+        if(!isNew){
             //修改新闻
             SQL mysql=new SQL();
             newsMap=mysql.queryFirst("select * from news where id="+nid);

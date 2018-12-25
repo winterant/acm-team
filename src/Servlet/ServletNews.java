@@ -48,14 +48,15 @@ public class ServletNews extends HttpServlet {
 
         JSONObject ret=new JSONObject();
         SQL mysql=new SQL();
-        String sql="select id from news where id="+id;
+        String sql;
 
-        if(mysql.queryList(sql).size()==0){  //该编号不存在时，先插入
-            sql=String .format("insert into news(id,publishTime) values('%s','%s')",id,publishTime);
-            if(mysql.update(sql)<1){
+        if(Changing.strToNumber(id)==0){  //编号为0，则为添加新的新闻，先插入
+            sql=String .format("insert into news(publishTime) values('%s')",publishTime);
+            if(mysql.update(sql)==0){
                 ret.put("result",false);
                 ret.put("msg","数据库插入失败");
             }
+            id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get(0));
         }
         if("save".equals(type)){
             sql=String.format("update news set title='%s',mainText='%s',author='%s',status='%s'"

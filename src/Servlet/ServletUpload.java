@@ -36,16 +36,10 @@ public class ServletUpload extends HttpServlet {
     private int uploadFiles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JSONException {
 
         request.setCharacterEncoding("UTF-8");
-        User user= (User) request.getSession().getAttribute("user");
         response.setContentType("text/html;charset=utf-8");
+        User user= (User) request.getSession().getAttribute("user");
 
         JSONObject ret=new JSONObject();
-//        if(user==null||!user.isExist()){
-//            ret.put("result",false);
-//            ret.put("msg","权限不足");
-//            response.getWriter().print(ret);
-//            return 0; //没有的登录的用户没有权限上传文件
-//        }
 
         int id=0;
         try {
@@ -75,8 +69,7 @@ public class ServletUpload extends HttpServlet {
 
                     String realPath = getUploadHome(request)+path;//文件完整绝对路径
                     File storeFile = new File(realPath);
-                    //如果父目录不存在，就创建他
-                    if(!storeFile.getParentFile().exists()){
+                    if(!storeFile.getParentFile().exists()){//如果父目录不存在，就创建他
                         storeFile.getParentFile().mkdirs();
                     }
                     System.out.println(realPath);// 在控制台输出文件的上传路径
@@ -90,7 +83,7 @@ public class ServletUpload extends HttpServlet {
 
                     if(mysql.update(sql)>0){
                         System.out.println("files成功插入一个文件");
-                        id= (int) mysql.queryFirst("select max(id) id from files").get("id");
+                        id= (int) mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id");
                     }
 
 
@@ -101,7 +94,7 @@ public class ServletUpload extends HttpServlet {
                         String aimUserName=user.getString("userName");
                         sql=String.format("insert into photoes(userName,fileid) values('%s',%d)",aimUserName,id);
                         if(mysql.update(sql)>0){
-                            System.out.println("设为头像成功.");
+                            System.out.println("设为头像成功");
                         }
                         ret.put("path",path);
                     }
@@ -137,21 +130,16 @@ public class ServletUpload extends HttpServlet {
 
     private String getUploadHome(HttpServletRequest request){
         //获取上传文件的父目录的绝对路径，通俗的说就是upload目录放在哪
-        //默认放在项目的父目录下，与项目是兄弟
-        //下面改为false，则父目录为本项目web
-        String path = request.getServletContext().getRealPath("");
-        if(true){
-            path=path.replace("\\","/");//一定要加上，不然路径在插入数据库时会出错
-            path=path.substring(0,path.length()-1);
-            path=path.substring(0,path.lastIndexOf("/"));
-        }
-        return path; //返回的路径是与项目文件夹同级别的目录
+        //下面获得本项目的父目录，即/upload与项目是兄弟文件夹
+        String path=request.getServletContext().getRealPath(""); //项目根目录的绝对路径
+        path=new File(path).getParent(); //向上一级
+        return path.replace("\\","/");
     }
     private String getSaveName(HttpServletRequest request,String fileName){
-        //生成一个文件名
+        //生成一个文件名:date_time_ms_userName.*
         String fileType=fileName.substring(fileName.lastIndexOf(".")); //获取后缀
         String fileSaveName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()).toString();
-        fileSaveName+="_"+new Date().getTime();
+        fileSaveName+="_"+new Date().getTime()%1000;
         User user= (User) request.getSession().getAttribute("user");
         if(user!=null)fileSaveName+="_"+user.getString("userName");
         return fileSaveName+fileType; //+后缀

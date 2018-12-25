@@ -49,7 +49,7 @@ public class ServletContest extends HttpServlet {
         String url=request.getParameter("url");
 
         title=Changing.strTransfer(title);
-//        mainText=Changing.strTransfer(mainText);
+        mainText=Changing.strTransfer(mainText);
         mainText=mainText.replace("\n","<br>");
         url=Changing.strTransfer(url);
 
@@ -68,22 +68,16 @@ public class ServletContest extends HttpServlet {
                 Date endTime=new Date(endT);
 
                 System.out.println("开始操作数据库...");
-                int id=1;
                 String sql=null;
                 SQL mysql=new SQL();
                 if("update".equals(type)){
-                    id= Changing.strToNumber(request.getParameter("cid"),1);
+                    int id= Changing.strToNumber(request.getParameter("cid"));
                     sql=String.format("update contests set platform='%s',title='%s',mainText='%s',startTime='%s'," +
                             "endTime='%s',url='%s' where id=%d",platform,title,mainText,start,sdf.format(endTime),url,id);
 
                 }else{
-                    sql = "select MAX(id) from contests";
-                    ResultSet rs=mysql.queryRS(sql);
-                    if(rs!=null&&rs.next()){
-                        id=rs.getInt(1)+1;
-                    }
-                    sql= String.format("insert into contests(id,platform,title,mainText,startTime,endTime,url) " +
-                            "values('%d','%s','%s','%s','%s','%s','%s')",id,platform,title,mainText,start,sdf.format(endTime),url);
+                    sql= String.format("insert into contests(platform,title,mainText,startTime,endTime,url) " +
+                            "values('%s','%s','%s','%s','%s','%s')",platform,title,mainText,start,sdf.format(endTime),url);
                 }
                 System.out.println(sql);
                 if(mysql.update(sql)>0){
@@ -98,8 +92,6 @@ public class ServletContest extends HttpServlet {
                 e.printStackTrace();
                 ret.put("result",false);
                 ret.put("msg","请您输入合法的开始时间，例如：2018-12-31 12:00:00");
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
 

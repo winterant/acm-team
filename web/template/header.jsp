@@ -32,7 +32,7 @@
             </div>
 
             <%
-                //头部定义用户userTemp，可供所有页面使用,EL表达式可以直接取出session中的user
+                //头部定义用户userTemp，可供所有页面使用。另外EL表达式可以直接取出session中的user
                 User userTemp=(User)session.getAttribute("user");
             %>
             <%--登录模块--%>

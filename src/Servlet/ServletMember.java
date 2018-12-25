@@ -62,7 +62,7 @@ public class ServletMember extends HttpServlet {
         if("add".equals(type)){
             sql="insert into members() values()";
             mysql.update(sql);
-            id=String.valueOf(mysql.queryFirst("select MAX(id) id from members").get("id"));
+            id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id"));
             System.out.println("just id="+id);
         }
 

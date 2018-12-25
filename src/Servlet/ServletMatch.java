@@ -64,20 +64,16 @@ public class ServletMatch extends HttpServlet {
         } else {
             try {
                 Date matchDate = sdf.parse(date); ///通过异常来试探，这是不是一个正确格式的日期
-                int id = 1;
                 String sql = null;
                 SQL mysql = new SQL();
+                int id = 1;
                 if ("add".equals(opertype)) {
-                    sql = "select MAX(id) from matches";
-                    ResultSet rs = mysql.queryRS(sql);
-                    if (rs != null && rs.next()) {
-                        id = rs.getInt(1) + 1;
-                    }
-                    sql = String.format("insert into matches(id,title,date) values(%d,'%s','%s')", id, title, date);
+                    sql = String.format("insert into matches(title,date) values('%s','%s')", title, date);
                     mysql.update(sql);
                     System.out.println(sql);
+                    id= (int) mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id");
                 } else {
-                    id = Changing.strToNumber(request.getParameter("mid"), 1);
+                    id = Changing.strToNumber(request.getParameter("mid"), 0);
                 }
 
                 sql = String.format("update matches set type='%s',date='%s',title='%s',mainText='%s',gold='%s'," +
@@ -95,8 +91,6 @@ public class ServletMatch extends HttpServlet {
                 e.printStackTrace();
                 ret.put("result",false);
                 ret.put("msg","日期格式错误");
-            } catch(SQLException e){
-                e.printStackTrace();
             }
         }
         response.setContentType("text/html;charset=utf-8");

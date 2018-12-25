@@ -19,7 +19,7 @@
     String nid=request.getParameter("nid");
     SQL mysql=new SQL();
     String sql;
-    if(true||session.isNew()) {
+    if(true) {
         sql = "update news set lookCount=lookCount+1 where id='" + nid + "'";
         mysql.update(sql);
     }
@@ -40,7 +40,7 @@
             <div class="newsContainer">
                 <h1 align="center" style="width: 92%"><%=news.get("title")%></h1>
                 <div class="newsReadInfo" style="text-align: center;">
-                    <td>作者：[ <a href="/profilePage.jsp?userName=<%=news.get("userName")%>"><%=news.get("author")%></a> ]</td>
+                    <td>作者：[ <a href="/profilePage.jsp?userName=<%=news.get("author")%>"><%=news.get("author")%></a> ]</td>
                     <td>时间：[ <%=news.get("publishTime").toString().substring(0,19)%> ]</td>
                     <td>浏览：[ <%=news.get("lookCount")%> ]</td>
                     <c:if test="${user.userMap.power>0}">

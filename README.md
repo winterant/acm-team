@@ -9,25 +9,29 @@ ACM程序设计实验室管理网站（jsp）<br>
     排名。根据用户的codeforces、atcoder、牛客用户名，使用htmlunit网络爬虫获取积分进行排名。
     成员。收集团队成员信息进行展示。
 
-# 主要配置
+# 部署到windows10 IDEA
+  ## 文件上传问题
+  文件上传默认上传到项目的父目录(webapps)下的upload文件夹，这样的话前台访问不到，因此做一个映射。
+  * 修改tomcat配置，编辑tomcat/conf/server.xml<br>
+    找到<Host ...> \</Host>标签，在其中添加：<br>
+    \<Context path="upload" docBase="upload" reloadable="true" /> <br>
+  * IDEA 设置，打开Run/Debug Configurations,进入tomcat设置，
+    在tomcat server settings中选中Deploy applications configured in Tomcat instance
+    
+        使用外部jar：/extends/jar/files/*
+        servlet(可修改上传路径)：/src/Servlet/ServletUpload
+        文件上传位置：自动创建与项目根目录同级的目录winterUpload/（注意此目录不在web内，而是同级）
+        文件读取servlet：/src/Servlet/ServletLoad
+  
   ## 数据库MySql5默认配置
   （可在/src/Mysql/SQL.java中修改）
   
     数据库名称：winter
     数据库用户（localhost）：root
     数据库用户密码：iloveyou
-  ## 数据库创建
+  ## 数据库创建脚本
     /extends/mysql/winter.sql
     
-  ## tomcat8.5默认配置
-   请在**服务器**端tomcat/conf/server.xml中修改默认应用路径为本项目，否则项目中路径跳转出错。
-  
-  ## 项目所需的jar包
-  全部在/extends/jar/* 备份
-  
-  ## htmlunit爬虫
-  java代码位于/src/Reptile/*，主类HtmlunitURL.java使用htmlunit，其他类继承自HtmlunitURL
-  
   ## /web/template文件夹说明
   此文件夹存放其他页面所有的公共成分。重要的有：
   
@@ -38,10 +42,13 @@ ACM程序设计实验室管理网站（jsp）<br>
     pagingDiv.jsp     翻页div
     vagueSearch.jsp   模糊搜索div
     
-  ## 文件上传
-    使用外部jar：/src/jar/files/*
-    servlet：/src/Servlet/ServletUpload
-    文件上传位置：自动创建与项目根目录同级的目录winterUpload/（注意此目录不在web内，而是同级）
-    文件读取servlet：/src/Servlet/ServletLoad
+  ## 项目所需的jar包
+  全部在/extends/jar/* 备份
   
+  ## htmlunit爬虫
+  java代码位于/src/Reptile/*，主类HtmlunitURL.java使用htmlunit，其他类继承自HtmlunitURL
   
+# 部署到远程tomcat服务器
+  * 将本地打好的war包，上传至tomcat/webapps/下
+  * 配置虚拟路径为根目录
+  * 配置文件上传虚拟路径，同win10 IDEA配置中的‘文件上传问题’

@@ -27,13 +27,14 @@
                 response.sendRedirect("/");
                 return;
             }
+            request.setAttribute("userInfo",userInfo);
         %>
 
         <div class="userProfile">
             <%--个人信息表--%>
             <div id="userInfo">
                 <div class="<%=UserColor.getUserColor(userInfo)%>">
-                    <font size="15em"><%=userInfo.getString("userName")%></font>
+                    <font size="15em">${userInfo.userMap.userName}</font>
                 </div>
                 <div style="padding:5px;">
                     <font size="2em"><%=userInfo.getString("school")%> <%=userInfo.getString("className")%> <%=userInfo.getString("nickName")%></font>
@@ -83,12 +84,12 @@
                 <div id="photo">
                     <img id="userPhoto" width="100%" src="<%=FilePath.getPhotoPath(userInfo.getString("userName"))%>" alt="<%=userInfo.getString("userName")%>">
                 </div>
-                <% if(userInfo.equals(userTemp)){ %>
+                <c:if test="${userInfo.userMap.id==user.userMap.id}">
                     <div style="width: 60%;text-align: center;margin: 2% auto;">
                         <input id="myphoto" type="file" name="pic" onchange="uploadFiles('myphoto','photo')" hidden>
                         <button type="button" onclick="$('#myphoto').click();">更换</button>
                     </div>
-                <% } %>
+                </c:if>
             </div>
             <%--end of user photo--%>
 

@@ -140,8 +140,9 @@ a:hover{
     min-width: 300px;
     margin: 1%;
     border: 1px solid #7f7f7f;
-    border-radius: 4px;
-    background-color: #ecf5ff;
+    border-radius: 30px;
+    background-color: #ff411c;
+    color: white;
     cursor: pointer;
 }
 .td1{
