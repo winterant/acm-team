@@ -23,7 +23,7 @@
 <%--这是一个页码条的模板模块,上面是java代码示例--%>
 <%--需要上面的页面定义页码对象paging--%>
 
-<div class="pagingContainer <%=paging.getEndPage()==1?" hide":""%>">
+<div class="pagingContainer <%=paging.getEndPage()==1?"":""%>">
     <div class="paging">
         <li>
             <a href="<%=paging.getGotoPath(request,paging.getIndexPage())%>" style="border-top-left-radius: 4px;border-bottom-left-radius: 4px"> << </a>

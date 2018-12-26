@@ -123,7 +123,7 @@
                         paging.addExact("platform",platform);
                     }
 
-//                out.print(paging.getSql());
+//                  out.print(paging.getSql());
                     List<Map<String,Object>> list=paging.getDataList(nowPage); //获取当前页的内容
                     request.setAttribute("list",list);
                 %>
@@ -180,7 +180,7 @@
                             <th>平台</th>
                             <th>竞赛信息</th>
                             <th>状态</th>
-                            <th>功能</th>
+                            <th></th>
                         </tr>
                         <script type="text/javascript">
                             var secMap=new Map();
@@ -192,7 +192,7 @@
                                         <fmt:formatDate value="${item.get('startTime')}" var="sDate" pattern="yyyy-MM-dd"></fmt:formatDate>
                                         <fmt:formatDate value="${item.get('startTime')}" var="sTime" pattern="HH:mm:ss"></fmt:formatDate>
                                         ${sDate}<br>
-                                        <font color="#ff000e">${sTime}</font>
+                                        <font>${sTime}</font>
                                     </p>
                                 </td>
 
@@ -216,9 +216,9 @@
 
                                 <td>
                                     <p style="margin:0;font-size: 1.05em;"><a href="${item.get('url')}" target="_blank">${item.get('title')}</a></p>
-                                    <p style="margin-bottom: 0;color: #5a5a5a;word-break:break-all;">
+                                    <p style="margin-bottom: 0;word-break:break-all;">
                                         <img src="images/smallPic/notice.jpg" style="height: 15px">
-                                        <font>
+                                        <font style="color: #5a5a5a;">
                                             ${item.mainText}
                                         </font>
                                     </p>
@@ -229,7 +229,7 @@
                                     <c:set var="now" value="<%=new Date().getTime()%>"></c:set>
                                     <c:choose>
                                         <c:when test="${item.startTime.time > now}">
-                                            <font class="oneline" color="#cf0f00">等你来战！</font>
+                                            <font class="oneline">等你来战！</font>
                                         </c:when>
                                         <c:when test="${item.startTime.time<now && now<item.endTime.time}">
                                             <font class="oneline" color="#00b708">正在比赛中...</font>
@@ -239,7 +239,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                     <br>
-                                    <font id="timedown${j.index}" class="oneline"></font>
+                                    <font id="timedown${j.index}" class="oneline" style="color: #505050;"></font>
                                     <script type="text/javascript">
                                         var tim=${item.startTime.time > now}?${item.startTime.time-now}:${item.endTime.time-now};
                                         secMap.set(${j.index},Math.floor(tim/1000));
@@ -271,8 +271,8 @@
                                 </td>
 
                                 <td>
-                                    <li class="oneline">[<a href="#">查看榜单</a>]</li>
-                                    <li class="oneline">[<a href="#">提交记录</a>]</li>
+                                    <%--<li class="oneline">[<a href="#">查看榜单</a>]</li>--%>
+                                    <%--<li class="oneline">[<a href="#">提交记录</a>]</li>--%>
                                     <c:if test="${user!=null && user.userMap.power>0}">
                                         <li>
                                                 [<a href="javascript:overlay('contest-back','contest-main');

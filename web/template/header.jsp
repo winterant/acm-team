@@ -21,9 +21,6 @@
                     <li><a id="rank" href="/rankPage.jsp">排名</a></li>
                     <li><a id="members" href="/membersPage.jsp">团队</a></li>
                     <li><a id="online" class="oneline" href="<%=lduojAddr%>" target="_blank">Online Judge</a></li>
-                    <c:if test="${user!=null}">
-                        <li><a id="profile" href="/profilePage.jsp">我的主页</a></li>
-                    </c:if>
                 </ul>
 
             </div>

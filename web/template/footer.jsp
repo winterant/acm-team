@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="footContainer">
-    <p style="font-size: .8em;margin-bottom: 4px">
-        <a href="${pageContext.request.contextPath}/" target="_parent"><%=homeName%></a>
+    <p style="margin-bottom: 4px">
+        <a href="${rootPath}/" target="_parent"><%=homeName%></a>
         <font style="color: #ffffff">&nbsp;|&nbsp;</font>
         <a href="http://icpc.ldu.edu.cn" target="_blank">LDU Online Judge</a>
         <font style="color: #ffffff">&nbsp;|&nbsp;</font>
@@ -23,7 +23,7 @@
 
     <div>
         <p style="margin: 5px;color: white">
-            Copyright © 2018 winter All rights reserved.
+            Copyright © 2018 ACM程序设计实验室 All rights reserved.
         </p>
     </div>
 </div>

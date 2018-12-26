@@ -126,8 +126,9 @@
                                     </c:if>
                                 </font>
                             </h3>
-                            <p style="margin: 0;width:70%;font-size: 0.9em;">
-                                <font style="font-weight: bold">摘要：</font>${item.mainText}
+                            <p style="margin: 0;width:70%;font-size: 0.9em;color:#505050">
+                                <font style="font-weight: bold">摘要：</font>
+                                <font>${item.mainText}</font>
                             </p>
                             <p style="margin: 0;font-size: 0.9em;text-align: right">
 
