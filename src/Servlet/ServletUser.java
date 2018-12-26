@@ -7,7 +7,6 @@ import Reptile.Codeforces;
 import Reptile.Newcoder;
 import Tools.Changing;
 import Tools.Checking;
-import com.sun.org.apache.bcel.internal.classfile.Code;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,9 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 @WebServlet(name = "ServletUser",urlPatterns = {"/ServletUser"})
 public class ServletUser extends HttpServlet {
@@ -66,6 +62,7 @@ public class ServletUser extends HttpServlet {
         if(user.isExist()){
             session.setAttribute("user",user);
             session.setMaxInactiveInterval(60*30);
+            System.out.println("user login success! hello "+userName);
 /*
             new Thread(() -> {
                 Codeforces.updateUser(userName);

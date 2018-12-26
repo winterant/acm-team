@@ -144,7 +144,18 @@ a:hover{
     background-color: #ff411c;
     color: white;
     cursor: pointer;
+    outline:none;
 }
+.btnSpeakSubmit{
+    margin:1%;
+    border: 1px solid #7f7f7f;
+    border-radius: 4px;
+    background-color: #ff411c;
+    color: white;
+    cursor: pointer;
+    outline:none;
+}
+
 .td1{
     width: 15%;
     min-width: 150px;
@@ -297,6 +308,7 @@ a:hover{
     border: 0;
     padding: 8px 15px 8px 15px;
     cursor: pointer;
+    outline:none;
 }
 
 /*下拉菜单元素的样式*/

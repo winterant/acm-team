@@ -1,7 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="winterJsp:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/winterJsp_war_exploded</output-path>
+  <artifact type="exploded-war" build-on-make="true" name="war_exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/war_exploded</output-path>
     <root id="root">
+      <element id="javaee-facet-resources" facet="acm-team/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="acm-team" />
@@ -10,7 +11,6 @@
           <element id="library" level="project" name="jsp" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="acm-team/web/Web" />
     </root>
   </artifact>
 </component>

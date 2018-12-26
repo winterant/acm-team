@@ -115,7 +115,7 @@
                     <c:if test="${user==null}">
                         <input id="authorName" style="float:left;width: 70%;margin-top: 4px" placeholder="留下你的名字吧">
                     </c:if>
-                    <button id="btnSaySth" type="button" onclick="speak()" style="float: right;background-color: #f3f7f8;color: #557bff;margin: 4px;">发表</button>
+                    <button id="btnSaySth" class="btnSpeakSubmit" type="button" onclick="speak()" style="float: right;">发表</button>
                 </div>
 
                 <%--显示6条最近留言--%>

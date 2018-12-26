@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: winter
@@ -22,13 +23,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"></c:set>
-
 <link rel="shortcut icon" href="${rootPath}/images/background/favicon.ico" type="image/x-icon" />
 <link type="text/css" rel="stylesheet" href="${rootPath}/template/css/main.css">
 
 <%!
     String homeName="ACM梦工厂";
     String teamName="鲁东大学";
+    //请不要更改数组元素的顺序！数据库中存的是下标
     String[] OJplatform=new String[]{"常规","codeforces","牛客","atcoder","vjudge","upcOJ","lduOJ","HDU"};
     String[] matchName={"icpc亚洲区域赛&邀请赛","icpc山东省赛","ccpc中国大学生程序设计竞赛","蓝桥杯山东省赛","蓝桥杯全国总决赛","中国计算机团体程序设计天梯赛","校际联合竞赛"};
     String homeSelectColor="#b1e8f8";

@@ -33,7 +33,7 @@ public class ServletUpload extends HttpServlet {
         return;
     }
 
-    private int uploadFiles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JSONException {
+    private void uploadFiles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JSONException {
 
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
@@ -41,7 +41,6 @@ public class ServletUpload extends HttpServlet {
 
         JSONObject ret=new JSONObject();
 
-        int id=0;
         try {
             // 配置上传参数
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -59,6 +58,7 @@ public class ServletUpload extends HttpServlet {
             }
             String type=field.get("type"); //上传类型。上传子目录
             if(type==null||type.length()<1)type=request.getParameter("type");
+            System.out.println("type="+type);
 
             // 迭代表单数据
             for (FileItem item : formItems) {
@@ -78,13 +78,15 @@ public class ServletUpload extends HttpServlet {
                     //下面把这个文件路径插入数据库 表files
                     SQL mysql=new SQL();
                     String sql=String.format("insert into files(realName,path,author,time,type) " +
-                            "values('%s','%s','%s','%s',%d)",fileName,path,user==null?"匿名":user.getString("userName"),
+                                    "values('%s','%s','%s','%s',%d)",fileName,path,user==null?"匿名":user.getString("userName"),
                             new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),0);
 
                     if(mysql.update(sql)>0){
                         System.out.println("files成功插入一个文件");
-                        id= (int) mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id");
+                    }else{
+                        System.out.println("文件路径插入数据库失败");
                     }
+                    long id= (long) mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id");
 
 
 
@@ -124,7 +126,6 @@ public class ServletUpload extends HttpServlet {
         ret.put("result",true);
         ret.put("msg","上传成功");
         response.getWriter().print(ret);
-        return id;
     }
 
 

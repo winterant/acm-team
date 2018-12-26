@@ -19,8 +19,9 @@
     <%
         String midStr=request.getParameter("mid");
         SQL mysql=new SQL();
-        Map member=mysql.queryFirst("select * from members where id="+midStr);
+        Map member=mysql.queryFirst("select * from members where status>0 and id="+midStr);
         if(member==null||(member).isEmpty()){
+            out.print("<script>alert('成员不存在或未审核');</script>");
             response.sendRedirect("/");
             return;
         }
