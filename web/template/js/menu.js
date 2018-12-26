@@ -23,12 +23,3 @@ function classSlideUp(className) {
         $(this).slideUp(200);
     });
 }
-
-/***** 小屏幕 ******/
-function showMenu(id) {
-    if($('#'+id).is(':hidden')){
-        $('#'+id).slideDown(300);
-    }else{
-        $('#'+id).slideUp(300);
-    }
-}

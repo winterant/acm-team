@@ -18,13 +18,13 @@ public class Atcoder extends HtmlunitURL{
         //正则表达式匹配分数
         Pattern pattern=Pattern.compile("Rating</th><td><span class='user-\\S*'>[0-9]+");
         Matcher matcher=pattern.matcher(html);
-        String score="0";
+        String score="*";
         if(matcher.find()){
             int s=matcher.group().lastIndexOf(">");
             score=matcher.group().substring(s+1);
         }
         System.out.println("atcoder rating of "+atName+":"+score);
-        if(score.equals("0"))return 0;
+        if(score.equals("*"))return 0;
 
         String sql="update users set atcoderRating="+score+" where userName='"+userName+"'";
         SQL mysql=new SQL();

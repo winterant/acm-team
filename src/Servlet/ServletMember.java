@@ -1,5 +1,6 @@
 package Servlet;
 
+import Beans.User;
 import Mysql.SQL;
 import Tools.Changing;
 import org.json.JSONException;
@@ -86,11 +87,15 @@ public class ServletMember extends HttpServlet {
     private void changeStatus(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JSONException {
         int mid=Changing.strToNumber(request.getParameter("mid"),-1);
         JSONObject ret=new JSONObject();
-        SQL mysql=new SQL();
-        if(mid==-1){
+        User user= (User) request.getSession().getAttribute("user");
+        if(user==null||user.getInt("power")==0){
+            ret.put("result",false);
+            ret.put("msg","权限不足");
+        }else if(mid==-1){
             ret.put("result",false);
             ret.put("msg","该队员不存在，请刷新页面");
         }else{
+            SQL mysql=new SQL();
             String sql="update members set status=1-status where id="+mid;
             if(mysql.update(sql)==0){
                 ret.put("result",false);
@@ -99,9 +104,9 @@ public class ServletMember extends HttpServlet {
                 ret.put("result",true);
                 ret.put("msg","修改成功");
             }
+            mysql.close();
         }
 
-        mysql.close();
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().print(ret);
     }

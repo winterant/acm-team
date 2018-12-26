@@ -26,8 +26,9 @@
 <link rel="shortcut icon" href="${rootPath}/images/background/favicon.ico" type="image/x-icon" />
 <link type="text/css" rel="stylesheet" href="${rootPath}/template/css/main.css">
 
+
 <%!
-    String homeName="ACM梦工厂";
+    String homeName="ACM程序设计实验室";
     String teamName="鲁东大学";
     //请不要更改数组元素的顺序！数据库中存的是下标
     String[] OJplatform=new String[]{"常规","codeforces","牛客","atcoder","vjudge","upcOJ","lduOJ","HDU"};
@@ -41,5 +42,5 @@
     String atcoderAddr="https://atcoder.jp";
     String vjudgeAddr="https://vjudge.net";
     String upcAddr="http://exam.upc.edu.cn";
-    String lduojAddr="http://winter2121.top:8025";
+    String lduojAddr="http://icpc.ldu.edu.cn";
 %>

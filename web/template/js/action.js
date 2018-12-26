@@ -97,3 +97,21 @@ function selectOption(id,value) {
         }
     }
 }
+
+
+//格式化时间 2000-01-01 12:00:00
+function formatDate(date) {
+    var year = date.getFullYear(),
+        month = date.getMonth() + 1,//月份是从0开始的
+        day = date.getDate(),
+        hour = date.getHours(),
+        min = date.getMinutes(),
+        sec = date.getSeconds();
+    var newTime = year + '-' +
+        (month<10?'0':'')+month + '-' +
+        (day<10?'0':'')+day + ' ' +
+        (hour<10?'0':'')+hour + ':' +
+        (min<10?'0':'')+min + ':' +
+        (sec<10?'0':'')+sec;
+    return newTime;
+}

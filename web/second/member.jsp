@@ -1,12 +1,14 @@
-<%@ page import="Mysql.SQL" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="Tools.FilePath" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: winter
   Date: 2018/12/20
   Time: 13:23
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ page import="Mysql.SQL" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="Tools.FilePath" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,7 +21,11 @@
     <%
         String midStr=request.getParameter("mid");
         SQL mysql=new SQL();
-        Map member=mysql.queryFirst("select * from members where status>0 and id="+midStr);
+        String sql="select * from members where id="+midStr;
+        if(userTemp==null||userTemp.getInt("power")==0){
+            sql+=" and status>0";
+        }
+        Map member=mysql.queryFirst(sql);
         if(member==null||(member).isEmpty()){
             out.print("<script>alert('成员不存在或未审核');</script>");
             response.sendRedirect("/");

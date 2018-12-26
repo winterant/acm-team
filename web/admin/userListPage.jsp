@@ -1,7 +1,4 @@
-<%@ page import="Tools.Paging" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.List" %>
-<%@ page import="Tools.Changing" %>
+
 <%--
   Created by IntelliJ IDEA.
   User.java: winter
@@ -9,7 +6,10 @@
   Time: 20:31
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@ page import="Tools.Paging" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Tools.Changing" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -70,14 +70,14 @@
                         <td><a href="${rootPath}/profilePage.jsp?userName=${item.userName}">${item.userName}</a></td>
                         <td>${item.nickName}</td>
                         <td>
-                            <font id="iden${j.index}">${["student","@teacher","@administrator"][item.power]}</font>
+                            <font id="iden${j.index}">${["student","@teacher","@@administrator"][item.power]}</font>
                             <c:if test="${'admin'==user.userMap.userName}">
                                 <a href="javascript:changePower('${item.userName}',1);" title="升级权限">↑</a>
                                 <a href="javascript:changePower('${item.userName}',0);" title="降级权限">↓</a>
                             </c:if>
                         </td>
                         <td>
-                            <font>${["hidden","display","Love"][item.status]}</font>
+                            <font>${["hidden","@display","@@Love"][item.status]}</font>
                             <c:if test="${'admin'==user.userMap.userName}">
                                 <a href="javascript:changeStatus('${item.userName}',1);" title="升级身份">↑</a>
                                 <a href="javascript:changeStatus('${item.userName}',0);" title="降级身份">↓</a>

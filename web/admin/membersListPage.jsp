@@ -98,7 +98,7 @@
                     <td>${item.name}</td>
                     <td>${item.grade}</td>
                     <td>${item.major}</td>
-                    <td>${['*退役','@现役','教师'].get(item.identity)}</td>
+                    <td>${['退役','@现役','@@教师'].get(item.identity)}</td>
                     <td>
 
                         [<a href="javascript:memberStatus('${item.id}')" title="点击更改">${['待审核','已通过'].get(item.status)}</a>]

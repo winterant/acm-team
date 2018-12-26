@@ -7,11 +7,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="headContainer">
     <div id="head-nav">
-        <div id="head-title">
-            <a href="${pageContext.request.contextPath}/"><%=homeName%></a>
-            <button type="button" id="head-menu-btn" onclick="showMenu('head-menu-login')">
-                <font style="font-family: 华文楷体">menu</font>
-            </button>
+        <div id="head-title" class="oneline">
+            <a href="/"><%=homeName%></a>
         </div>
 
         <div id="head-menu-login">
@@ -20,10 +17,10 @@
                     <li><a id="home" href="/">首页</a></li>
                     <li><a id="news" href="/newsListPage.jsp">新闻</a></li>
                     <%--<li><a id="study" href="/study.jsp">资料</a></li>--%>
-                    <%--<li><a id="online" href="<%=lduojAddr%>" target="_blank">LDUOJ</a></li>--%>
                     <li><a id="recent" href="/contestsPage.jsp">竞赛</a></li>
                     <li><a id="rank" href="/rankPage.jsp">排名</a></li>
-                    <li><a id="members" href="/membersPage.jsp">成员</a></li>
+                    <li><a id="members" href="/membersPage.jsp">团队</a></li>
+                    <li><a id="online" class="oneline" href="<%=lduojAddr%>" target="_blank">Online Judge</a></li>
                     <c:if test="${user!=null}">
                         <li><a id="profile" href="/profilePage.jsp">我的主页</a></li>
                     </c:if>

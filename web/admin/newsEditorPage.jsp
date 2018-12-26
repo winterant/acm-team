@@ -44,24 +44,28 @@
         <%@include file="managerLeft.jsp"%>
         <%-- 添加新闻 --%>
         <div class="adminRightArea">
-            <form>
-                <h3>编辑<%=nid==1?"公告":"新闻"%></h3>
-                <div style="margin-bottom:20px">
-                    <input id="txtTitle" name="newsTitle" type="text" maxlength="100" placeholder="输入标题" value="<%=titleStr%>">
-                </div>
+            <div style="width: 96%;margin: 0 auto">
+                <form>
+                    <h3>编辑<%=nid==1?"公告":"新闻"%></h3>
+                    <div style="margin-bottom:20px">
+                        <input id="txtTitle" name="newsTitle" type="text" maxlength="100" placeholder="输入标题" value="<%=titleStr%>">
+                    </div>
 
-                <div id="editor" style="text-align: left;background-color: white;margin-bottom: 20px;">
-                </div>
-                <c:if test="${!isNew}">
-                    <p style="margin: 0;float: left">
-                        <input id="cbox" type="checkbox" name="updateDate">
-                        <font onclick="$('#cbox').click()" style="cursor:pointer;vertical-align: top">将发表时间修改为现在</font>
-                    </p>
-                    <br>
-                </c:if>
-            </form>
-            <button class="form-control" onclick="WEsave('<%=nid%>','<%=user.getString("userName")%>')" type="button">保存草稿</button>
-            <button class="form-control" onclick="WEpublish('<%=nid%>','<%=user.getString("userName")%>')" type="button">提交</button>
+                    <div id="editor" style="text-align: left;background-color: white;margin-bottom: 20px;">
+                    </div>
+                    <c:if test="${!isNew}">
+                        <p style="margin: 0;float: left">
+                            <input id="cbox" type="checkbox" name="updateDate">
+                            <font onclick="$('#cbox').click()" style="cursor:pointer;vertical-align: top">将发表时间修改为现在</font>
+                        </p>
+                        <br>
+                    </c:if>
+                </form>
+                <button class="form-control" onclick="WEsave('<%=nid%>','<%=user.getString("userName")%>')" type="button">保存草稿</button>
+                <button class="form-control" onclick="WEpublish('<%=nid%>','<%=user.getString("userName")%>')" type="button">提交</button>
+
+            </div>
+
         </div>
     </div>
     <%@include file="/template/footer.jsp"%>

@@ -17,7 +17,7 @@
 <body>
 <%@ include file="/template/header.jsp"%>
     <div class="bigContainer">
-        <center>
+        <center class="userProfile">
             <h2>修改个人信息</h2>
             <%
                 User user= (User) session.getAttribute("user");
