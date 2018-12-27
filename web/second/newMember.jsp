@@ -1,12 +1,13 @@
-<%@ page import="Mysql.SQL" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="Tools.FilePath" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: winter
   Date: 2018/12/17
   Time: 14:54
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="Mysql.SQL" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="Tools.FilePath" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -30,7 +31,7 @@
         }
     %>
     <div class="bigContainer">
-        <center>
+        <center style="background-color: white">
             <h1>欢迎填写队员信息</h1>
             <form id="form-member">
                 <table class="table-input-info">

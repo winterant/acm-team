@@ -1,21 +1,10 @@
 
 
-/***直接执行事件，点击id***/
+/***回车直接执行事件，点击id***/
 function enterToClick(id) {
     id='#'+id;
     if(event.keyCode == "13"){  //回车
         $(id).click();
-    }
-}
-
-
-/********主页左侧homeLeftPage.jsp，实现鼠标指上时展示奖项数量*********/
-function prizeDisplay(len,way) {
-    for(var i=0;i<len;i++){
-        if(way==0)
-            $('#prizeInfo'+i).fadeIn(200)
-        else
-            $('#prizeInfo'+i).fadeOut(200);
     }
 }
 
@@ -62,29 +51,29 @@ function toAdd(id) {
 
 /******以下是在比赛战绩界面用的*******/
 /*把添加竞赛功能，转化成修改竞赛功能*/
-function toUpdateMatch(id,cid,type,title,mainText,date,gold,silver,bronze,newsUrl) {
+function toUpdateMatch(id,cid,type,title,date,gold,silver,bronze,fine,newsid) {
     document.getElementById(id).setAttribute("onclick","updateMatch("+cid+")");
 
     var amd=document.getElementById('addModSelect');
     for(i=0;i<amd.length;i++)amd[i].selected=false;
     amd[type].selected=true;
     $("input[name=title]").val(title);
-    $("textarea[name=mainText]").val(mainText);
     $("input[name=date]").val(date);
     $("input[name=gold]").val(gold);
     $("input[name=silver]").val(silver);
     $("input[name=bronze]").val(bronze);
-    $("input[name=newsUrl]").val(newsUrl);
+    $("input[name=fine]").val(fine);
+    $("input[name=newsid]").val(newsid);
 }
 function toAddMatch(id) {
     document.getElementById(id).setAttribute("onclick","addMatch()");
 
     $("input[name=title]").val('');
-    $("textarea[name=mainText]").val('');
     $("input[name=gold]").val('');
     $("input[name=silver]").val('');
     $("input[name=bronze]").val('');
-    $("input[name=newsUrl]").val('');
+    $("input[name=fine]").val('');
+    $("input[name=newsid]").val('');
 }
 
 
@@ -114,4 +103,8 @@ function formatDate(date) {
         (min<10?'0':'')+min + ':' +
         (sec<10?'0':'')+sec;
     return newTime;
+}
+
+function goToTop() {
+    $('html,body').animate({scrollTop:$('body').offset().top}, 200);
 }

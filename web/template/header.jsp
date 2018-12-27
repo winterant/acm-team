@@ -16,11 +16,11 @@
                 <ul style="font-size: 1.1em">
                     <li><a id="home" href="/">首页</a></li>
                     <li><a id="news" href="/newsListPage.jsp">新闻</a></li>
-                    <%--<li><a id="study" href="/study.jsp">资料</a></li>--%>
+                    <li><a id="achievement" href="/achievementPage.jsp">战绩</a></li>
                     <li><a id="recent" href="/contestsPage.jsp">竞赛</a></li>
                     <li><a id="rank" href="/rankPage.jsp">排名</a></li>
                     <li><a id="members" href="/membersPage.jsp">团队</a></li>
-                    <li><a id="online" class="oneline" href="<%=lduojAddr%>" target="_blank">Online Judge</a></li>
+                    <li><a id="online" class="oneline" href="<%=lduojAddr%>">Online Judge</a></li>
                 </ul>
 
             </div>

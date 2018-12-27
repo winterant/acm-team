@@ -466,7 +466,7 @@ function uploadFiles(inputid,type) {
                 alert(ret['msg']);
             }
         },
-        error:function (mag) {
+        error:function (err) {
             console.log("上传失败，请重试");
             alert("上传出错，请重试");
             // window.location.reload();

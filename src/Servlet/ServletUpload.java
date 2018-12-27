@@ -86,7 +86,7 @@ public class ServletUpload extends HttpServlet {
                     }else{
                         System.out.println("文件路径插入数据库失败");
                     }
-                    long id= (long) mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id");
+                    String id= mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id").toString();
 
 
 

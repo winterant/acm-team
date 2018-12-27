@@ -11,6 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <%@include file="/template/headTag.jsp"%>
@@ -52,7 +53,7 @@
                 <table class="table-list">
                     <tr>
                         <th>编号</th>
-                        <th width="50%">标题</th>
+                        <th>标题</th>
                         <th>作者</th>
                         <th>发表时间</th>
                         <th>状态</th>
@@ -64,7 +65,7 @@
                             <td><a href="/second/newsPage.jsp?nid=${item.id}" >${item.title}</a></td>
                             <td><a href="/profilePage.jsp?userName=${item.author}">${item.author}</a></td>
                             <td>${fn:substring(item.publishTime,0,19)}</td>
-                            <td><p>${item.status==1?"公开":"草稿"}</p></td>
+                            <td>${item.status==1?"公开":"草稿"}</td>
                             <td align="center">
                                     <%--用p 的white-space:nowrap 强制不换行--%>
                                 [<a class="oneline" href="newsEditorPage.jsp?nid=${item.id}" >修改</a>]

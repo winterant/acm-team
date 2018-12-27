@@ -3,12 +3,14 @@ ACM程序设计实验室管理网站（jsp）<br>
 参观一下网站：http://ldu.winter2121.top <br>
 服务器搭建参照：https://blog.csdn.net/winter2121/article/details/83308354 <br>
 
+
 # 主要模块
     新闻。编辑使用富文本编辑器wangeditor，git：https://github.com/wangfupeng1988/wangEditor
     竞赛。初始版本管理员可以人工添加竞赛。
     排名。根据用户的codeforces、atcoder、牛客用户名，使用htmlunit网络爬虫获取积分进行排名。
     成员。收集团队成员信息进行展示。
 
+# 以下先不要看，未纠正
 # 部署到windows10 IDEA
   ## 文件上传问题
   文件上传默认上传到项目的父目录(webapps)下的upload文件夹，这样的话前台访问不到，因此做一个映射。

@@ -18,42 +18,18 @@
             mysqlLeft.close();
         %>
 
-        <%--战绩--%>
         <div class="item-left-block">
-            <div style="overflow:hidden;">
-                <div class="leftSmallTitle" onmousemove="prizeDisplay(<%=matchName.length%>,0)" onmouseleave="prizeDisplay(<%=matchName.length%>,1)">
-                    <a href="/second/gradePage.jsp" class="user-color6"><%=teamName%>ACM战绩</a>
-                </div>
+            <div style="overflow: hidden">
+                <div class="leftSmallTitle">友情链接</div>
             </div>
-            <hr style="margin: 0">
-            <div class="dropShowSTH">
-                <ul class="ulstyleNone" style="font-size: 0.9em;">
-                    <%
-                        SQL mysqlMatch=new SQL();
-                        String sqlMatch;
-                        for(int i=0;i<matchName.length;i++){
-                            sqlMatch=String.format("select ifnull(sum(gold),0) num from matches where type=%d",i);
-                            String gold=mysqlMatch.queryFirst(sqlMatch).get("num").toString();
-                            sqlMatch=String.format("select ifnull(sum(silver),0) num from matches where type=%d",i);
-                            String silver=mysqlMatch.queryFirst(sqlMatch).get("num").toString();
-                            sqlMatch=String.format("select ifnull(sum(bronze),0) num from matches where type=%d",i);
-                            String bronze=mysqlMatch.queryFirst(sqlMatch).get("num").toString();
-                    %>
-                        <li style="padding:1%;">
-                            <a href="/second/gradePage.jsp?type=<%=i%>" onmousemove="$('#prizeInfo<%=i%>').fadeIn(200)" onmouseleave="$('#prizeInfo<%=i%>').fadeOut(200)"><%=matchName[i]%></a>
-                            <%--<br>--%>
-                            <font id="prizeInfo<%=i%>" class="prizeInfo" style="font-size: 0.86em">
-                                <%--<font style="padding-left: 5%;">汇总:</font>--%>
-                                <font class="bg-gold">金×<%=gold%></font>
-                                <font class="bg-silver">银×<%=silver%></font>
-                                <font class="bg-bronze">铜×<%=bronze%></font>
-                            </font>
-                        </li>
-                    <%
-                        }
-                        mysqlMatch.close();
-                    %>
-                </ul>
+            <hr style="margin:0;">
+            <div id="dropShowImg" class="dropShowSTH">
+                <li><a href="<%=lduojAddr%>" target="_blank">LDU Online Judge</a></li>
+                <li><a href="<%=vjudgeAddr%>">Vjudge.net</a></li>
+                <li><a href="<%=codeforcesAdrr%>" target="_blank">codeforces</a></li>
+                <li><a href="<%=newcoderAddr%>" target="_blank">牛客网竞赛</a></li>
+                <li><a href="<%=atcoderAddr%>" target="_blank">AtCoder</a></li>
+                <li class="line-limit-length"><a href="<%=upcAddr%>" target="_blank">中国石油大学程序设计竞赛训练平台</a></li>
             </div>
         </div>
 
@@ -70,14 +46,14 @@
 
         <%--近期新闻--%>
         <div class="item-left-block">
-            <div style="overflow:hidden;">
+            <div style="position: relative">
                 <div class="leftSmallTitle">近期新闻</div>
-                <div style="float: right;"><a href="/newsListPage.jsp" style="font-size: 0.7em;">更多..</a></div>
+                <div style="position: absolute;right: 0;bottom: 0"><a href="/newsListPage.jsp" style="font-size: 0.7em;">更多..</a></div>
             </div>
             <div id="dropShowNews" class="dropShowSTH">
                 <hr style="margin:0;">
                 <c:forEach var="item" items="${nearNews}">
-                    <p class="line-limit-length" style="margin:6px 0;font-size: 0.8em">
+                    <p class="line-limit-length" style="margin:6px 0;">
                         <a href="/second/newsPage.jsp?nid=${item.id}" title="${item.title}">
                             ${item.title}
                         </a>
@@ -124,5 +100,7 @@
             <%--</div>--%>
         <%--</div>--%>
         <%--end of speaks--%>
+
+
     </div>
     <%--end of left--%>

@@ -42,18 +42,17 @@ public class ServletMatch extends HttpServlet {
         String type = request.getParameter("type");
         String date = request.getParameter("date");
         String title = request.getParameter("title");
-        String mainText = request.getParameter("mainText");
         String gold = request.getParameter("gold");
         String silver = request.getParameter("silver");
         String bronze = request.getParameter("bronze");
-        String newsUrl = request.getParameter("newsUrl");
+        String fine = request.getParameter("fine");
+        String newsid = request.getParameter("newsid");
         if (gold == null || gold.length() < 1) gold = "0";
         if (silver == null || silver.length() < 1) silver = "0";
         if (bronze == null || bronze.length() < 1) bronze = "0";
+        if (fine == null || fine.length() < 1) fine = "0";
 
         title = Changing.strTransfer(title);
-        mainText = Changing.strTransfer(mainText);
-        newsUrl = Changing.strTransfer(newsUrl);
 
         JSONObject ret = new JSONObject();
 
@@ -76,8 +75,8 @@ public class ServletMatch extends HttpServlet {
                     id = Changing.strToNumber(request.getParameter("mid"), 0);
                 }
 
-                sql = String.format("update matches set type='%s',date='%s',title='%s',mainText='%s',gold='%s'," +
-                        "silver='%s',bronze='%s',newsUrl='%s' where id=%d", type, date, title, mainText, gold, silver, bronze, newsUrl, id);
+                sql = String.format("update matches set type='%s',date='%s',title='%s',gold='%s',silver='%s',bronze='%s',fine='%s',newsid='%s' where id=%d"
+                        , type, date, title, gold, silver, bronze,fine, newsid, id);
                 System.out.println(sql);
                 if (mysql.update(sql) > 0) {
                     ret.put("result",true);

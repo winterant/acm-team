@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 @WebServlet(name = "ServletNews",urlPatterns = {"/ServletNews"})
 public class ServletNews extends HttpServlet {
@@ -80,6 +81,17 @@ public class ServletNews extends HttpServlet {
             }else{
                 ret.put("result",false);
                 ret.put("msg","删除失败");
+            }
+        }else if("query".equals(type)){
+            sql="select * from news where id="+id;
+            Map re=mysql.queryFirst(sql);
+            System.out.println(sql+"结果是\n"+re.toString());
+            if(!re.isEmpty()){
+                ret.put("result",true);
+                ret.put("news",re);
+            }else{
+                ret.put("result",false);
+                ret.put("msg","新闻不存在");
             }
         }
 

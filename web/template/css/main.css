@@ -266,7 +266,7 @@ a:hover{
     margin-top :7px;
 }
 #head-menu li{
-    min-width:100px;
+    min-width:80px;
     width: 14%;
     float: left;
     height: 36px;
@@ -278,6 +278,7 @@ a:hover{
 #head-menu li a:hover{
     color: #d6d2d2;
 }
+
 
 /*登录模块*/
 #login-menu{
@@ -400,8 +401,17 @@ a:hover{
     margin-bottom: 16px;
     background-color: white;
 }
-
-
+.item-left-block li{
+    list-style: none;
+    padding: 1% 0;
+}
+.item-left-block a{
+    target: new;
+    font-size: 0.9em;
+}
+.item-left-block a:hover {
+    text-decoration: underline;
+}
 
 
 /**** index.jsp右侧大区域 ****/
@@ -454,6 +464,48 @@ a:hover{
     bottom: 0;
     right: 5px;
 }
+
+/*************achievementPage.jsp*************/
+.item-block{
+    width: 47%;
+    min-height: 350px;
+    margin:0.5%;
+    padding:1%;
+    border-radius: 4px;
+    background: white;
+    float: left;
+    overflow: auto;
+}
+.prize-show{
+
+}
+.everyYear{
+    padding: 1% 0;
+    font-size: 0.88em;
+}
+.everyYear li{
+    list-style: none;
+    padding:0.2% 0;
+}
+.prize-show a:hover{
+    text-decoration: underline;
+}
+
+.prizeShowNews{
+    display: none;
+    border-radius: 4px;
+    background-color: white;
+    margin: 1% 0.5% 10% 0.5%;
+    padding: 2%;
+}
+.backA{
+    position: absolute;
+    font-size: 1.1em;
+}
+.backA:hover{
+    text-decoration: underline;
+}
+
 
 /***********gradePage.jsp**********/
 .match-list{
@@ -841,7 +893,7 @@ a:hover{
 .leftSmallTitle{
     padding:1% 0;
     font-weight: bold;
-    float: left;
+    /*float: left;*/
 }
 
 /*强制不换行*/
