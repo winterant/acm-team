@@ -19,7 +19,7 @@
         String sql;
         SQL mysql=new SQL();
         sql= "select type,year(date) year,sum(gold) gold,sum(silver) silver,sum(bronze) bronze" +
-                ",sum(fine) fine from matches group by type,year(date) order by date DESC";
+                ",sum(fine) fine from matches group by type,year(date) order by year(date) DESC";
         List prizes=mysql.queryList(sql);
         request.setAttribute("prizes",prizes);
         request.setAttribute("list",mysql.queryList("select *,year(date) year from matches"));
@@ -54,9 +54,9 @@
                                             <c:if test="${prize.year==pri.year&&prize.type==pri.type}">
                                                 <li style="padding-left: 2%">
                                                     <a href="javascript:void(0)" onclick="showNews(${prize.newsid})">${prize.title}</a>
-                                                    <font class="${prize.gold>0?'':'hide'}">${pname[0]}×${prize.gold}&nbsp;</font>
-                                                    <font class="${prize.silver>0?'':'hide'}">${pname[1]}×${prize.silver}&nbsp;</font>
-                                                    <font class="${prize.bronze>0?'':'hide'}">${pname[2]}×${prize.bronze}&nbsp;</font>
+                                                    <font class="pc-gold ${prize.gold>0?'':'hide'}">${pname[0]}×${prize.gold}</font>
+                                                    <font class="pc-silver ${prize.silver>0?'':'hide'}">${pname[1]}×${prize.silver}</font>
+                                                    <font class="pc-bronze ${prize.bronze>0?'':'hide'}">${pname[2]}×${prize.bronze}</font>
                                                     <font class="${prize.fine>0?'':'hide'}">${pname[3]}×${prize.fine}</font>
                                                 </li>
                                             </c:if>

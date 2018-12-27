@@ -24,12 +24,17 @@
             </div>
             <hr style="margin:0;">
             <div id="dropShowImg" class="dropShowSTH">
+                <li><a href="http://www.ldu.edu.cn/">鲁东大学官网</a></li>
                 <li><a href="<%=lduojAddr%>" target="_blank">LDU Online Judge</a></li>
                 <li><a href="<%=vjudgeAddr%>">Vjudge.net</a></li>
                 <li><a href="<%=codeforcesAdrr%>" target="_blank">codeforces</a></li>
                 <li><a href="<%=newcoderAddr%>" target="_blank">牛客网竞赛</a></li>
                 <li><a href="<%=atcoderAddr%>" target="_blank">AtCoder</a></li>
                 <li class="line-limit-length"><a href="<%=upcAddr%>" target="_blank">中国石油大学程序设计竞赛训练平台</a></li>
+                <li><a href="http://acm.hdu.edu.cn/" target="_blank">HDU杭州电子科技大学</a></li>
+                <li><a href="http://acm.sdut.edu.cn/" target="_blank">山东理工大学ACM主页</a></li>
+                <li><a href="http://acm.zju.edu.cn/onlinejudge/" target="_blank">浙江大学ZOJ</a></li>
+                <li><a href="http://poj.org/" target="_blank">北京大学POJ</a></li>
             </div>
         </div>
 

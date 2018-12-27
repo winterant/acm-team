@@ -506,6 +506,24 @@ a:hover{
     text-decoration: underline;
 }
 
+.pc-gold{
+    background-color: #fff500;
+    border-radius: 4px;
+    padding: 0 0.5%;
+    font-size:0.9em;
+}
+.pc-silver{
+    background-color: #c9cacc;
+    border-radius: 4px;
+    padding: 0 0.5%;
+    font-size:0.9em;
+}
+.pc-bronze{
+    background-color: #ffb300;
+    border-radius: 4px;
+    padding: 0 0.5%;
+    font-size:0.9em;
+}
 
 /***********gradePage.jsp**********/
 .match-list{

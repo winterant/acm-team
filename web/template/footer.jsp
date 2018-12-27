@@ -23,7 +23,7 @@
 
     <div>
         <p style="margin: 5px;color: white">
-            Copyright © 2018 ACM程序设计实验室 All rights reserved.
+            Copyright © 2018 <%=homeName%> All rights reserved.
         </p>
     </div>
 </div>
