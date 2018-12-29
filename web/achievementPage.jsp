@@ -73,7 +73,7 @@
     <div class="bigContainer">
         <div style="width: 98%">
             <div id="showNews" class="prizeShowNews">
-                <a href="javascript:goToTop()" class="backA">返回战绩</a>
+                <a href="javascript:goToTop()" class="backA">返回顶部</a>
                 <h1 id="ptitle" style="margin: 0;text-align: center"></h1>
                 <hr style="margin: 0">
                 <div id="ptext"></div>
@@ -81,6 +81,7 @@
         </div>
 
     </div>
+    /home/judge/src/web
 
     <%@include file="template/footer.jsp"%>
 <script type="text/javascript">

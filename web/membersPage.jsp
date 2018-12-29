@@ -62,9 +62,11 @@
                     <h4 style="margin-bottom: 0">教师</h4>
                     <hr style="margin: 0">
                     <table class="table-members">
+                        <% int step0=0; %>
                         <c:forEach var="item" items="${members}" varStatus="j">
                             <c:if test="${item.identity==2}">
                                 <tr id="member${item.id}">
+                                    <td><%=++step0%></td>
                                     <td><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td>
                                         <c:if test="${fn:indexOf(item.blog, 'http')!=-1}">
@@ -83,9 +85,11 @@
                     <h4 style="margin-bottom: 0">现役队员</h4>
                     <hr style="margin: 0">
                     <table class="table-members">
+                        <% int step1=0; %>
                         <c:forEach var="item" items="${members}" varStatus="j">
                             <c:if test="${item.identity==1}">
                                 <tr id="member${item.id}">
+                                    <td><%=++step1%></td>
                                     <td><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td>${item.grade}级</td>
                                     <td>${item.major}</td>
@@ -106,9 +110,11 @@
                     <h4 style="margin-bottom: 0">退役队员</h4>
                     <hr style="margin: 0">
                     <table class="table-members">
+                        <% int step2=0; %>
                         <c:forEach var="item" items="${members}" varStatus="j">
                             <c:if test="${item.identity==0}">
                                 <tr id="member${item.id}">
+                                    <td><%=++step2%></td>
                                     <td><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td>${item.grade}级</td>
                                     <td>${item.major}</td>

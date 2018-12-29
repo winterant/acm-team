@@ -467,13 +467,13 @@ a:hover{
 
 /*************achievementPage.jsp*************/
 .item-block{
-    width: 47%;
-    min-height: 350px;
+    width: 95%;
+    /*min-height: 350px;*/
     margin:0.5%;
     padding:1%;
     border-radius: 4px;
     background: white;
-    float: left;
+    /*float: left;*/
     overflow: auto;
 }
 .prize-show{

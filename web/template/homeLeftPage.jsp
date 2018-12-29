@@ -24,8 +24,8 @@
             </div>
             <hr style="margin:0;">
             <div id="dropShowImg" class="dropShowSTH">
-                <li><a href="http://www.ldu.edu.cn/">鲁东大学官网</a></li>
-                <li><a href="<%=lduojAddr%>" target="_blank">LDU Online Judge</a></li>
+                <li><a href="http://www.ldu.edu.cn/" target="_blank">鲁东大学官网</a></li>
+                <li><a href="<%=lduojAddr%>/index.php" target="_blank">LDU Online Judge</a></li>
                 <li><a href="<%=vjudgeAddr%>">Vjudge.net</a></li>
                 <li><a href="<%=codeforcesAdrr%>" target="_blank">codeforces</a></li>
                 <li><a href="<%=newcoderAddr%>" target="_blank">牛客网竞赛</a></li>

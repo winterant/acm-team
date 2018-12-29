@@ -7,7 +7,7 @@ public class SQL {
     private static String serverIP="localhost";
     private static String serverPort="3306";
     private static String dataName="winter"; //数据库名称
-    private static String user="root";
+    private static String user="winter";
     private static String password="iloveyou";
 
     private static String url="jdbc:mysql://"+serverIP+":"+serverPort+"/"+dataName+"?useUnicode=true&characterEncoding=UTF-8";
