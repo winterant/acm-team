@@ -81,7 +81,6 @@
         </div>
 
     </div>
-    /home/judge/src/web
 
     <%@include file="template/footer.jsp"%>
 <script type="text/javascript">

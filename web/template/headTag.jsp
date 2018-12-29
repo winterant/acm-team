@@ -31,7 +31,7 @@
     String homeName="ICPC创新实验室";
     String teamName="鲁东大学";
     //请不要更改数组元素的顺序！数据库中存的是下标
-    String[] OJplatform=new String[]{"常规","codeforces","牛客","atcoder","vjudge","upcOJ","lduOJ","HDU"};
+    String[] OJplatform={"常规","codeforces","牛客","atcoder","vjudge","upcOJ","lduOJ","HDU"};
     String[] matchName={"icpc亚洲区域赛&邀请赛","山东省ACM程序设计大赛","ccpc中国大学生程序设计竞赛",
             "蓝桥杯系列","中国计算机团体程序设计天梯赛","其它竞赛"};
     String homeSelectColor="#b1e8f8";
