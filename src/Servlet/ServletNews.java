@@ -57,7 +57,9 @@ public class ServletNews extends HttpServlet {
                 ret.put("result",false);
                 ret.put("msg","数据库插入失败");
             }
-            id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get(0));
+            System.out.println("添加新闻："+sql);
+            id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id"));
+            System.out.println("新增id："+id);
         }
         if("save".equals(type)){
             sql=String.format("update news set title='%s',mainText='%s',author='%s',status='%s'"

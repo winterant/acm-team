@@ -41,13 +41,8 @@
     %>
     <div class="bigContainer">
         <c:choose>
-            <c:when test="${true}">
-                <%--关闭此页面的功能--%>
-                <div class="container">
-                    <h1>管理员关闭了此功能，如有需要请联系ICPC创新实验室</h1>
-                </div>
-            </c:when>
-            <c:otherwise>
+            <%-- test第一参数为false时，此页面将仅允许管理员访问 --%>
+            <c:when test="${ false || user!=null && user.userMap.power>0}">
                 <div class="container">
                     <h1>欢迎填写队员信息</h1>
                     <form id="form-member">
@@ -113,7 +108,6 @@
 
                     <p style="color: #7f7f7f">提交后你的信息需要等待管理员验证后在前台显示</p>
                 </div>
-
                 <%--此页面开启时，才加载一下js--%>
                 <script type="text/javascript" src="${rootPath}/wangEditor/release/wangEditor.min.js"></script>
                 <script type="text/javascript">
@@ -230,6 +224,12 @@
                         });
                     }
                 </script>
+            </c:when>
+            <c:otherwise>
+                <%--关闭了此页面的功能--%>
+                <div class="container">
+                    <h1>管理员关闭了此功能，如有需要请联系ICPC创新实验室</h1>
+                </div>
             </c:otherwise>
         </c:choose>
     </div>

@@ -68,8 +68,7 @@ a:hover{
     background-color: #e1e1e1;
 }
 .table-list tr td{
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding: 1%;
     text-align: center;
 }
 

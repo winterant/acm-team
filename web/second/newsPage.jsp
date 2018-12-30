@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="Mysql.SQL" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="Tools.Checking" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,9 @@
     //浏览量+1
     request.setCharacterEncoding("UTF-8");
     String nid=request.getParameter("nid");
+    if(Changing.strToNumber(nid)==0){
+        nid="1";
+    }
     SQL mysql=new SQL();
     String sql;
     if(true) {
