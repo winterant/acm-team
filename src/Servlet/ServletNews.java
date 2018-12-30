@@ -38,7 +38,7 @@ public class ServletNews extends HttpServlet {
         String mainText=request.getParameter("mainText");
         String updateDate=request.getParameter("updateDate");
         String author=request.getParameter("author");
-        String publishTime=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());
+        String publishTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String status=request.getParameter("status");
 
         title= Changing.strTransfer(title);

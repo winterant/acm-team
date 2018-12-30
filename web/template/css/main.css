@@ -439,7 +439,7 @@ a:hover{
 }
 .newsTitle{
     margin:8px auto;
-    width:65%;
+    width:80%;
     float: left;
     font-size: 0.9em;
 }
@@ -461,12 +461,14 @@ a:hover{
 
 /*************achievementPage.jsp*************/
 .item-block{
+    /*float: left;*/
+    /*width: 47%;*/
     /*min-height: 350px;*/
+    /*上面三句可以两个item-block一行*/
     margin:0.5%;
     padding:1%;
     border-radius: 4px;
     background: white;
-    /*float: left;*/
     overflow: auto;
 }
 .prize-show{

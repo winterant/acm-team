@@ -75,6 +75,7 @@ public class ServletMatch extends HttpServlet {
                     id = Changing.strToNumber(request.getParameter("mid"), 0);
                 }
 
+                if(Changing.strToNumber(newsid)==0)newsid="1";
                 sql = String.format("update matches set type='%s',date='%s',title='%s',gold='%s',silver='%s',bronze='%s',fine='%s',newsid='%s' where id=%d"
                         , type, date, title, gold, silver, bronze,fine, newsid, id);
                 System.out.println(sql);

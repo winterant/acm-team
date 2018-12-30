@@ -18,7 +18,7 @@
             <li><a id="memberList" href="membersListPage.jsp">成员列表</a></li>
             <li><a id="newsEditor" href="newsEditorPage.jsp">添加新闻</a> </li>
             <li><a id="gongEditor" href="newsEditorPage.jsp?nid=1">编辑首页</a></li>
-            <li><a id="addMatch" href="addMatchPage.jsp">历史战绩</a></li>
+            <li><a id="addMatch" href="MatchListPage.jsp">历史战绩</a></li>
             <li><a id="dataUpdate" href="dataUpdatePage.jsp">数据更新</a></li>
         </ul>
     </div>

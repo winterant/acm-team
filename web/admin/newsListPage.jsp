@@ -32,14 +32,13 @@
             <div class="adminRightArea">
                 <h3>新闻列表</h3>
 
-                <%@include file="/template/vagueSearch.jsp"%>
                 <%
                     request.setCharacterEncoding("UTF-8");
                     String keyWords=request.getParameter("keyWords");
                     String nowPageStr=request.getParameter("nowPage");
                     int nowPage= Changing.strToNumber(nowPageStr,1);
                     Paging paging=new Paging("news");
-                    paging.setOrder("id",1);
+                    paging.setOrder("publishTime",1);
                     paging.addVague("title",keyWords);
                     paging.addVague("author",keyWords);
                     paging.addVague("id",keyWords);
@@ -48,7 +47,8 @@
                     paging.addNextArgs("keyWords",keyWords);
                     request.setAttribute("news",list);
                 %>
-                <%@include file="/template/pagingDiv.jsp"%>
+                <%@include file="../template/vagueSearch.jsp"%>
+                <%@include file="../template/pagingDiv.jsp"%>
 
                 <table class="table-list">
                     <tr>

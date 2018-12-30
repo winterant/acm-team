@@ -1,11 +1,12 @@
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: winter
   Date: 2018/12/27
   Time: 16:33
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -21,11 +22,6 @@
     }
     SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
     request.setAttribute("matchName",matchName);
-
-    String sql="select * from matches order by date DESC";
-    SQL mysql=new SQL();
-    request.setAttribute("matches",mysql.queryList(sql));
-    mysql.close();
 %>
 <%@include file="/template/header.jsp"%>
 <div class="bigContainer">
@@ -95,6 +91,23 @@
                     onclick="overlay('match-back','match-main')"
                     class="form-control" >添加比赛成绩</button>
 
+            <%
+                request.setCharacterEncoding("UTF-8");
+                String keyWords=request.getParameter("keyWords");
+                String nowPageStr=request.getParameter("nowPage");
+                int nowPage= Changing.strToNumber(nowPageStr,1);
+                Paging paging=new Paging("matches");
+                paging.setOrder("date",1);
+                paging.addVague("title",keyWords);
+                paging.addVague("date",keyWords);
+                paging.addVague("id",keyWords);
+                paging.setPageSize(30);
+                List<Map<String,Object>> list=paging.getDataList(nowPage); //获取当前页的内容
+                paging.addNextArgs("keyWords",keyWords);
+                request.setAttribute("matches",list);
+            %>
+            <%@include file="../template/vagueSearch.jsp"%>
+            <%@include file="../template/pagingDiv.jsp"%>
 
             <table class="table-list">
                 <tr>
