@@ -216,12 +216,12 @@
 
                                 <td>
                                     <p style="margin:0;font-size: 1.05em;"><a href="${item.get('url')}" target="_blank">${item.get('title')}</a></p>
-                                    <p style="margin-bottom: 0;word-break:break-all;">
-                                        <img src="images/smallPic/notice.jpg" style="height: 15px">
-                                        <font style="color: #5a5a5a;">
-                                            ${item.mainText}
-                                        </font>
-                                    </p>
+
+                                    <%--<img src="images/smallPic/notice.jpg" style="height: 15px">--%>
+                                    <font style="color: #5a5a5a;word-break:break-all;">
+                                        ${item.mainText}
+                                    </font>
+
                                 </td>
 
                                 <td>
@@ -274,12 +274,12 @@
                                     <%--<li class="oneline">[<a href="#">查看榜单</a>]</li>--%>
                                     <%--<li class="oneline">[<a href="#">提交记录</a>]</li>--%>
                                     <c:if test="${user!=null && user.userMap.power>0}">
-                                        <li>
+                                        <li class="oneline">
                                                 [<a href="javascript:overlay('contest-back','contest-main');
                                                 toUpdate('contestbtn','${item.id}','${item.platform}','${item.title}',
                                                 '${item.mainText}','${item.startTime}','${item.endTime.time-item.startTime.time}','${item.url}')">编辑</a>]
                                         </li>
-                                        <li>
+                                        <li class="oneline">
                                                 [<a href="javascript:if(confirm('确定删除该竞赛记录吗?'))deleteContest('${item.id}')">删除</a>]
                                         </li>
                                     </c:if>

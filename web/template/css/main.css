@@ -20,13 +20,13 @@ body{
 }
 
 a{
-    color: #4e7ef1;
+    color: blue;
 }
 a:link{
     text-decoration:none
 }
 a:hover{
-    color: #ffbc00;
+    color: #ff7300;
 }
 
 
@@ -253,12 +253,7 @@ a:hover{
 }
 
 
-/*****菜单按钮*****/
-#head-menu-btn{
-    display: none;
-}
-
-/*大菜单*/
+/*头部大菜单*/
 #head-menu{
     float: left;
     text-align: center;
@@ -467,7 +462,6 @@ a:hover{
 
 /*************achievementPage.jsp*************/
 .item-block{
-    width: 95%;
     /*min-height: 350px;*/
     margin:0.5%;
     padding:1%;
@@ -480,23 +474,28 @@ a:hover{
 
 }
 .everyYear{
-    padding: 1% 0;
+    padding-top:1%;
     font-size: 0.88em;
 }
-.everyYear li{
-    list-style: none;
-    padding:0.2% 0;
+.table-prizes{
+    width: 98%;
+    margin-left: 2%;
+    border-collapse: collapse;
 }
-.prize-show a:hover{
-    text-decoration: underline;
+.table-prizes tr td{
+    padding: 0.5% 0;
 }
+.table-prizes tr:hover{
+    background-color: #e2e3e5;
+}
+
 
 .prizeShowNews{
     display: none;
     border-radius: 4px;
     background-color: white;
-    margin: 1% 0.5% 10% 0.5%;
     padding: 2%;
+    margin: 0.5%;
 }
 .backA{
     position: absolute;

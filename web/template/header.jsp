@@ -37,6 +37,37 @@
                             <li><a href="javascript:overlay('login-back','login-page');$('input[name=userName]').focus();">登录</a></li>
                             <li><a href="/second/registerPage.jsp">注册</a></li>
                         </ul>
+                        <%--模态框登录--%>
+                        <div id="login-back" class="modal-overlay" style="display: none;">
+                            <div id="login-page" class="modal-main">
+                                <div>
+                                    <font style="font-size: 1.3em">登录<%=homeName%></font>
+                                    <div class="close">
+                                        <a href="javascript:overlay('login-back','login-page')">×</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <form id="login">
+
+                                    <div class="login-block">
+                                        <p style="padding-bottom:16px;border-bottom: 1px solid #d4d4d4">
+                                            <label class="tit">账号</label>
+                                            <input name="userName" type="text" id="userName" class="txt" placeholder="请输入登录名">
+                                        </p>
+                                        <p>
+                                            <label class="tit">密码</label>
+                                            <input name="password" type="password" id="password" class="txt" onkeydown="enterToClick('login-submit')" placeholder="密码">
+                                        </p>
+                                    </div>
+
+                                    <button id="login-submit" class="btnSubmit" type="button" onclick="login();">登录</button>
+                                    <p style="margin: 0">
+                                        <a style="color: #1e88e5" href="#">忘记密码？</a>
+                                        <a style="color: #1e88e5" href="/second/registerPage.jsp">没有账号？注册一个</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <button onclick="dropShow('user-dropdown-menu')" class="dropbtn dropbtnUserInfo">
@@ -65,37 +96,3 @@
 
 </div>
 <%--head container end--%>
-
-
-<%--模态框登录--%>
-<div id="login-back" class="modal-overlay" style="display: none;">
-    <div id="login-page" class="modal-main">
-        <div>
-            <font style="font-size: 1.3em">登录<%=homeName%></font>
-            <div class="close">
-                <a href="javascript:overlay('login-back','login-page')">×</a>
-            </div>
-        </div>
-        <hr>
-        <form id="login">
-
-            <div class="login-block">
-                <p style="padding-bottom:16px;border-bottom: 1px solid #d4d4d4">
-                    <label class="tit">账号</label>
-                    <input name="userName" type="text" id="userName" class="txt" placeholder="请输入登录名">
-                </p>
-                <p>
-                    <label class="tit">密码</label>
-                    <input name="password" type="password" id="password" class="txt" onkeydown="enterToClick('login-submit')" placeholder="密码">
-                </p>
-            </div>
-
-            <button id="login-submit" class="btnSubmit" type="button" onclick="login();">登录</button>
-            <p style="margin: 0">
-                <a style="color: #1e88e5" href="#">忘记密码？</a>
-                <a style="color: #1e88e5" href="/second/registerPage.jsp">没有账号？注册一个</a>
-            </p>
-        </form>
-    </div>
-</div>
-

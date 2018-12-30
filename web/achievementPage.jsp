@@ -20,9 +20,12 @@
         SQL mysql=new SQL();
         sql= "select type,year(date) year,sum(gold) gold,sum(silver) silver,sum(bronze) bronze" +
                 ",sum(fine) fine from matches group by type,year(date) order by year(date) DESC";
-        List prizes=mysql.queryList(sql);
-        request.setAttribute("prizes",prizes);
-        request.setAttribute("list",mysql.queryList("select *,year(date) year from matches"));
+        request.setAttribute("yearPri",mysql.queryList(sql));
+        request.setAttribute("everyPri",mysql.queryList("select *,year(date) year from matches order by date ASC"));
+        sql= "select type,sum(gold) gold,sum(silver) silver,sum(bronze) bronze" +
+                ",sum(fine) fine from matches group by type order by type ASC";
+        request.setAttribute("typePri",mysql.queryList(sql));
+
         mysql.close();
         request.setAttribute("matchName",matchName);
         String []pname1={"金牌","银牌","铜牌","优胜奖"};
@@ -31,36 +34,47 @@
         request.setAttribute("pname2",pname2);
     %>
     <div class="bigContainer">
-        <c:forEach var="item" items="${matchName}" varStatus="j">
+        <c:forEach var="item" items="${typePri}" varStatus="j">
+            <c:set var="pname" value="${item.type<=2?pname1:pname2}"></c:set>
             <div class="item-block">
-                    <div class="leftSmallTitle">${item}</div>
+                    <div style="padding: 0.5% 0">
+                        <font style="font-weight: bold;font-size: 1.1em">${matchName[j.index]}</font>
+                        <font style="font-size: 0.8em">${pname[0]}×${item.gold}</font>
+                        <font style="font-size: 0.8em">${pname[1]}×${item.silver}</font>
+                        <font style="font-size: 0.8em">${pname[2]}×${item.bronze}</font>
+                        <font style="font-size: 0.8em">${pname[3]}×${item.fine}</font>
+                    </div>
                     <hr style="margin:0;">
                     <div class="prize-show">
-                        <c:forEach var="pri" items="${prizes}">
-                            <c:set var="pname" value="${j.index<=2?pname1:pname2}"></c:set>
-                            <c:if test="${pri.type == j.index}">
+                        <c:forEach var="yearPri" items="${yearPri}">
+                            <c:if test="${yearPri.type == item.type}">
                                 <div class="everyYear">
                                     <a class="user-color1" href="javascript:void(0)"
-                                       onclick="slideDisplay('yearPrize${j.index}_${pri.year}')">
-                                        <font>${pri.year}年</font>&nbsp;
-                                        <font>${pname[0]}×${pri.gold}</font>&nbsp;
-                                        <font>${pname[1]}×${pri.silver}</font>&nbsp;
-                                        <font>${pname[2]}×${pri.bronze}</font>&nbsp;
-                                        <font>${pname[3]}×${pri.fine}</font>
+                                       onclick="slideDisplay('yearPrize${item.type}_${yearPri.year}')">
+                                        <font>${yearPri.year}年</font>&nbsp;
+                                        <font>${pname[0]}×${yearPri.gold}</font>&nbsp;
+                                        <font>${pname[1]}×${yearPri.silver}</font>&nbsp;
+                                        <font>${pname[2]}×${yearPri.bronze}</font>&nbsp;
+                                        <font>${pname[3]}×${yearPri.fine}</font>
                                     </a>
                                     <%--输出pri.year年的所有塞站--%>
-                                    <div id="yearPrize${j.index}_${pri.year}" class="hide">
-                                        <c:forEach var="prize" items="${list}">
-                                            <c:if test="${prize.year==pri.year&&prize.type==pri.type}">
-                                                <li style="padding-left: 2%">
-                                                    <a href="javascript:void(0)" onclick="showNews(${prize.newsid})">${prize.title}</a>
-                                                    <font class="pc-gold ${prize.gold>0?'':'hide'}">${pname[0]}×${prize.gold}</font>
-                                                    <font class="pc-silver ${prize.silver>0?'':'hide'}">${pname[1]}×${prize.silver}</font>
-                                                    <font class="pc-bronze ${prize.bronze>0?'':'hide'}">${pname[2]}×${prize.bronze}</font>
-                                                    <font class="${prize.fine>0?'':'hide'}">${pname[3]}×${prize.fine}</font>
-                                                </li>
+                                    <div id="yearPrize${item.type}_${yearPri.year}" class="hide">
+                                        <table class="table-prizes">
+                                        <c:forEach var="prize" items="${everyPri}">
+                                            <c:if test="${prize.year==yearPri.year&&prize.type==yearPri.type}">
+                                                <tr>
+                                                    <td width="50%"><a href="javascript:void(0)" onclick="showNews(${prize.newsid})" >${prize.title}</a></td>
+                                                    <td width="20%"><font>${prize.date}</font></td>
+                                                    <td width="30%" class="oneline">
+                                                        <font class="pc-gold ${prize.gold>0?'':'hide'}">${pname[0]}×${prize.gold}</font>
+                                                        <font class="pc-silver ${prize.silver>0?'':'hide'}">${pname[1]}×${prize.silver}</font>
+                                                        <font class="pc-bronze ${prize.bronze>0?'':'hide'}">${pname[2]}×${prize.bronze}</font>
+                                                        <font class="${prize.fine>0?'':'hide'}">${pname[3]}×${prize.fine}</font>
+                                                    </td>
+                                                </tr>
                                             </c:if>
                                         </c:forEach>
+                                        </table>
                                     </div>
 
                                 </div>
@@ -71,7 +85,7 @@
         </c:forEach>
     </div>
     <div class="bigContainer">
-        <div style="width: 98%">
+        <div>
             <div id="showNews" class="prizeShowNews">
                 <a href="javascript:goToTop()" class="backA">返回顶部</a>
                 <h1 id="ptitle" style="margin: 0;text-align: center"></h1>

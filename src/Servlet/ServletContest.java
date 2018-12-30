@@ -64,7 +64,9 @@ public class ServletContest extends HttpServlet {
         }else{
             try {
                 Date startTime=sdf.parse(start);
-                long endT=startTime.getTime()+1000L*(Changing.strToNumber(length[0])*60*60+1000L*Changing.strToNumber(length[1])*60);
+                long endT=startTime.getTime();
+                endT+=1000L*Changing.strToNumber(length[0])*60*60;
+                if(length.length>1)endT+=1000L*Changing.strToNumber(length[1])*60;
                 Date endTime=new Date(endT);
 
                 System.out.println("开始操作数据库...");
