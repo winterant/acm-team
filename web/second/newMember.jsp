@@ -42,7 +42,7 @@
     <div class="bigContainer">
         <c:choose>
             <%-- test第一参数为false时，此页面将仅允许管理员访问 --%>
-            <c:when test="${ false || user!=null && user.userMap.power>0}">
+            <c:when test="${ true || user!=null && user.userMap.power>0}">
                 <div class="container">
                     <h1>欢迎填写队员信息</h1>
                     <form id="form-member">
@@ -196,7 +196,7 @@
                     console.log(res.msg);
                     if(${edi})window.location="${rootPath}/admin/membersListPage.jsp"
                     else{
-                        alert("您的信息提交成功，等待审核")
+                        alert("您的信息提交成功，等待管理员审核..")
                         window.location="${rootPath}/membersPage.jsp";
                     }
                 }else{
@@ -239,3 +239,5 @@
 </script>
 </body>
 </html>
+
+

@@ -20,7 +20,7 @@
     if(user==null||!user.isExist()||user.getInt("power")==0){
         response.sendRedirect("/"); //不是管理员将被送回主页
     }
-    SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
+    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
     request.setAttribute("matchName",matchName);
 %>
 <%@include file="/template/header.jsp"%>
