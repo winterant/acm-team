@@ -14,7 +14,7 @@
 <html>
 <head>
     <%@include file="/template/headTag.jsp"%>
-    <title><%=homeName%>-添加新闻</title>
+    <title><%=homeName%>-编辑新闻</title>
 
 </head>
 <body>
@@ -36,11 +36,11 @@
             newsMap=mysql.queryFirst("select * from news where id="+nid);
             titleStr=(String)newsMap.get("title");
             mainTextStr=(String)newsMap.get("mainText");
-        }else{
-            mysql.update("insert into news(publishTime) values('2000-01-01 00:00:00')");
-            nid=Integer.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id").toString());
         }
     %>
+    <script type="text/javascript">
+        var jsnid=<%=nid%>;
+    </script>
 
     <%@include file="/template/header.jsp"%>
     <div class="bigContainer">
@@ -49,7 +49,7 @@
         <div class="adminRightArea">
             <div style="width: 96%;margin: 0 auto">
                 <form>
-                    <h3>编辑<%=nid==1?"公告":"新闻"%></h3>
+                    <h3>编辑<%=nid==1?"首页":"新闻"%></h3>
                     <div style="margin-bottom:20px">
                         <input id="txtTitle" name="newsTitle" type="text" maxlength="100" placeholder="输入标题" value="<%=titleStr%>">
                     </div>
@@ -64,8 +64,9 @@
                         <br>
                     </c:if>
                 </form>
-                <button class="form-control" onclick="WEsave('<%=nid%>','<%=user.getString("userName")%>')" type="button">保存草稿</button>
-                <button class="form-control" onclick="WEpublish('<%=nid%>','<%=user.getString("userName")%>')" type="button">提交</button>
+
+                <button class="form-control" onclick="WEsave(jsnid,'<%=user.getString("userName")%>')" type="button">保存草稿</button>
+                <button class="form-control" onclick="WEpublish(jsnid,'<%=user.getString("userName")%>')" type="button">提交</button>
 
             </div>
 
@@ -134,7 +135,7 @@
     //把数据读出来放到输入框
     editor.txt.html("<%=Changing.strTransfer(mainTextStr).replace("\n","")%>");
 
-    var nowId=('<%=nid%>'=='1')?"gongEditor":"newsEditor";
+    var nowId=(jsnid==1)?"gongEditor":"newsEditor";
     document.getElementById(nowId).style.backgroundColor="#b3b3b3";
     document.getElementById(nowId).style.color="#000000";
 

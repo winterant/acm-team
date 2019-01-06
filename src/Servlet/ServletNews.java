@@ -51,7 +51,7 @@ public class ServletNews extends HttpServlet {
         SQL mysql=new SQL();
         String sql;
 
-        /*
+
         if(Changing.strToNumber(id)==0){  //编号为0，则为添加新的新闻，先插入
             sql=String .format("insert into news(publishTime) values('%s')",publishTime);
             if(mysql.update(sql)==0){
@@ -62,10 +62,11 @@ public class ServletNews extends HttpServlet {
             id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id"));
             System.out.println("新增id："+id);
         }
-        */
+        ret.put("nid",id);
+
         if("save".equals(type)){
-            sql=String.format("update news set title='%s',mainText='%s',author='%s',status='%s',publishTime='%s'"
-                    ,title,mainText,author,status,publishTime);
+            sql=String.format("update news set title='%s',mainText='%s',author='%s',status='%s'"
+                    ,title,mainText,author,status);
             if("true".equals(updateDate)){
                 sql+=",publishTime='"+publishTime+"'";
             }

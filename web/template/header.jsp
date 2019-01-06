@@ -8,18 +8,18 @@
 <div id="headContainer">
     <div id="head-nav">
         <div id="head-title" class="oneline">
-            <a href="/"><%=homeName%></a>
+            <a href="${rootPath}/"><%=homeName%></a>
         </div>
 
         <div id="head-menu-login">
             <div id="head-menu">
                 <ul style="font-size: 1.1em">
-                    <li><a id="home" href="/">首页</a></li>
-                    <li><a id="news" href="/newsListPage.jsp">新闻</a></li>
-                    <li><a id="achievement" href="/achievementPage.jsp">战绩</a></li>
-                    <li><a id="recent" href="/contestsPage.jsp">竞赛</a></li>
-                    <li><a id="rank" href="/rankPage.jsp">排名</a></li>
-                    <li><a id="members" href="/membersPage.jsp">团队</a></li>
+                    <li><a id="home" href="${rootPath}/">首页</a></li>
+                    <li><a id="news" href="${rootPath}/newsListPage.jsp">新闻</a></li>
+                    <li><a id="achievement" href="${rootPath}/achievementPage.jsp">战绩</a></li>
+                    <li><a id="recent" href="${rootPath}/contestsPage.jsp">竞赛</a></li>
+                    <li><a id="rank" href="${rootPath}/rankPage.jsp">排名</a></li>
+                    <li><a id="members" href="${rootPath}/membersPage.jsp">团队</a></li>
                     <li><a id="online" class="oneline" href="<%=lduojAddr%>/index.php">Online Judge</a></li>
                 </ul>
 
@@ -35,7 +35,7 @@
                     <c:when test="${user==null||!user.exist}">
                         <ul id="btnlogin">
                             <li><a href="javascript:overlay('login-back','login-page');$('input[name=userName]').focus();">登录</a></li>
-                            <li><a href="/second/registerPage.jsp">注册</a></li>
+                            <li><a href="${rootPath}/second/registerPage.jsp">注册</a></li>
                         </ul>
                         <%--模态框登录--%>
                         <div id="login-back" class="modal-overlay" style="display: none;">
@@ -63,7 +63,7 @@
                                     <button id="login-submit" class="btnSubmit" type="button" onclick="login();">登录</button>
                                     <p style="margin: 0">
                                         <a style="color: #1e88e5" href="#">忘记密码？</a>
-                                        <a style="color: #1e88e5" href="/second/registerPage.jsp">没有账号？注册一个</a>
+                                        <a style="color: #1e88e5" href="${rootPath}/second/registerPage.jsp">没有账号？注册一个</a>
                                     </p>
                                 </form>
                             </div>
@@ -75,12 +75,12 @@
                             <span class="caret"></span>
                         </button>
                         <ul id="user-dropdown-menu" class="dropdown dropdown-menu">
-                            <li><a href="/profilePage.jsp">我的主页</a></li>
+                            <li><a href="${rootPath}/profilePage.jsp">我的主页</a></li>
                             <li><a href="#">我的消息</a></li>
-                            <li><a href="/second/userModifyPage.jsp">修改信息</a></li>
+                            <li><a href="${rootPath}/second/userModifyPage.jsp">修改信息</a></li>
                             <c:set var="power" value="power"></c:set>
                             <c:if test="${user.userMap[power]>0}">
-                                <li><a href="/admin/manager.jsp">管理</a></li>
+                                <li><a href="${rootPath}/admin/manager.jsp">管理</a></li>
                             </c:if>
                             <li><a href="javascript:void(0)" onclick="logout()">注销</a></li>
                         </ul>

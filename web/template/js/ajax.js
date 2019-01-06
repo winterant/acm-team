@@ -225,6 +225,7 @@ function sendToServletNews(type,status,nid,author) {
             type:type
         },
         success:function (ret) {
+            jsnid=ret.nid;
             if(ret["result"]){
                 console.log('执行'+type+'成功 news id='+nid);
                 if(status==0){
