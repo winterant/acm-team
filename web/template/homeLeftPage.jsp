@@ -68,42 +68,44 @@
         </div>
 
         <%--留言板--%>
-        <div class="item-left-block">
-            <div style="position: relative">
-                <div class="leftSmallTitle">留言板</div>
-                <div style="position: absolute;right: 0;bottom: 0">
-                    <a href="/second/speaksPage.jsp" style="font-size: 0.7em;">查看所有..</a>
-                </div>
-            </div>
-            <div id="dropShowSpeaks" class="dropShowSTH">
-                <hr style="margin:0;">
-                <div style="overflow: hidden;margin-bottom: 3px;">
-                    <textarea id="saySth" style="width:97%;height: 70px;" maxlength="50" placeholder="留下您的宝贵建议吧.."></textarea>
-                    <c:if test="${user==null}">
-                        <input id="authorName" style="float:left;width: 70%;margin-top: 4px" placeholder="留下你的名字吧">
-                    </c:if>
-                    <button id="btnSaySth" class="btnSpeakSubmit" type="button" onclick="speak()" style="float: right;">发表</button>
-                </div>
-
-                <%--显示6条最近留言--%>
-                <c:forEach var="item" items="${nearSpeaks}" varStatus="j">
-                    <hr style="margin: 0">
-                    <div style="overflow: hidden;">
-                        <p style="margin:5px auto;font-size: 0.8em;">
-                            <c:choose>
-                                <c:when test="${item.isUser==1}">
-                                    <a href="/profilePage.jsp?userName=${item.author}">${item.author}</a>
-                                </c:when>
-                                <c:otherwise>${item.author}</c:otherwise>
-                            </c:choose>
-                            说：${item.mainText}
-                        </p>
-                        <p style="margin: 0;float:right;font-size: 0.8em">${item.publishTime}</p>
+        <c:if test="${false}">
+            <div class="item-left-block">
+                <div style="position: relative">
+                    <div class="leftSmallTitle">留言板</div>
+                    <div style="position: absolute;right: 0;bottom: 0">
+                        <a href="/second/speaksPage.jsp" style="font-size: 0.7em;">查看所有..</a>
                     </div>
-                </c:forEach>
+                </div>
+                <div id="dropShowSpeaks" class="dropShowSTH">
+                    <hr style="margin:0;">
+                    <div style="overflow: hidden;margin-bottom: 3px;">
+                        <textarea id="saySth" style="width:97%;height: 70px;" maxlength="50" placeholder="留下您的宝贵建议吧.."></textarea>
+                        <c:if test="${user==null}">
+                            <input id="authorName" style="float:left;width: 70%;margin-top: 4px" placeholder="留下你的名字吧">
+                        </c:if>
+                        <button id="btnSaySth" class="btnSpeakSubmit" type="button" onclick="speak()" style="float: right;">发表</button>
+                    </div>
 
+                        <%--显示6条最近留言--%>
+                    <c:forEach var="item" items="${nearSpeaks}" varStatus="j">
+                        <hr style="margin: 0">
+                        <div style="overflow: hidden;">
+                            <p style="margin:5px auto;font-size: 0.8em;">
+                                <c:choose>
+                                    <c:when test="${item.isUser==1}">
+                                        <a href="/profilePage.jsp?userName=${item.author}">${item.author}</a>
+                                    </c:when>
+                                    <c:otherwise>${item.author}</c:otherwise>
+                                </c:choose>
+                                说：${item.mainText}
+                            </p>
+                            <p style="margin: 0;float:right;font-size: 0.8em">${item.publishTime}</p>
+                        </div>
+                    </c:forEach>
+
+                </div>
             </div>
-        </div>
+        </c:if>
         <%--end of speaks--%>
 
 
