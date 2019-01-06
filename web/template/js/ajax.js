@@ -195,11 +195,9 @@ function WEsave(nid,author) {
 
 /**** wangeditor 发表新闻*******/
 function WEpublish(nid,author) {
-    //nid==0时看做添加新的新闻
     var ret=sendToServletNews('save','1',nid,author);
     if(ret==0) return;///标题为空
-    if(nid==1||nid==0) window.location="/";
-    else  window.location = "/second/newsPage.jsp?nid=" +nid;
+    window.location = "/second/newsPage.jsp?nid=" +nid;
 }
 
 /******wangeditor向servlet发送指令*****/

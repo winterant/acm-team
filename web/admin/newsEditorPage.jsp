@@ -30,12 +30,15 @@
         request.setAttribute("isNew",isNew);
         Map<String,Object> newsMap=null;
         String titleStr="",mainTextStr="";
+        SQL mysql=new SQL();
         if(!isNew){
             //修改新闻
-            SQL mysql=new SQL();
             newsMap=mysql.queryFirst("select * from news where id="+nid);
             titleStr=(String)newsMap.get("title");
             mainTextStr=(String)newsMap.get("mainText");
+        }else{
+            mysql.update("insert into news(publishTime) values('2000-01-01 00:00:00')");
+            nid=Integer.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id").toString());
         }
     %>
 
@@ -129,7 +132,7 @@
     editor.create();
 
     //把数据读出来放到输入框
-    editor.txt.html("<%=Changing.strTransfer(mainTextStr)%>");
+    editor.txt.html("<%=Changing.strTransfer(mainTextStr).replace("\n","")%>");
 
     var nowId=('<%=nid%>'=='1')?"gongEditor":"newsEditor";
     document.getElementById(nowId).style.backgroundColor="#b3b3b3";

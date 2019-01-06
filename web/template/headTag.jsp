@@ -28,7 +28,7 @@
 
 
 <%!
-    String homeName="ICPC创新实验室";
+    String homeName="ACM创新实验室";
     String teamName="鲁东大学";
     //请不要更改数组元素的顺序！数据库中存的是下标
     String[] OJplatform={"常规","codeforces","牛客","atcoder","vjudge","upcOJ","lduOJ","HDU"};
