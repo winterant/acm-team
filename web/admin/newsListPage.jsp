@@ -21,7 +21,7 @@
     <%
         User user= (User) session.getAttribute("user");
         if(user==null||!user.isExist()||user.getInt("power")==0){
-            response.sendRedirect("/"); //不是管理员将被送回主页
+            response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
         }
     %>
     <%@include file="/template/header.jsp"%>
@@ -62,8 +62,8 @@
                     <c:forEach var="item" items="${news}" varStatus="j">
                         <tr id="news${j.index}">
                             <td>${item.id}</td>
-                            <td><a href="/second/newsPage.jsp?nid=${item.id}" >${item.title}</a></td>
-                            <td><a href="/profilePage.jsp?userName=${item.author}">${item.author}</a></td>
+                            <td><a href="${rootPath}/second/newsPage.jsp?nid=${item.id}" >${item.title}</a></td>
+                            <td><a href="${rootPath}/profilePage.jsp?userName=${item.author}">${item.author}</a></td>
                             <td>${fn:substring(item.publishTime,0,19)}</td>
                             <td>${item.status==1?"公开":"草稿"}</td>
                             <td align="center">

@@ -13,18 +13,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/template/headTag.jsp"%>
+    <%@include file="template/headTag.jsp"%>
     <title><%=homeName%>-个人主页</title>
 </head>
 <body>
-    <%@ include file="/template/header.jsp"%>
+    <%@ include file="template/header.jsp"%>
     <div class="bigContainer">
         <%
             String userName=request.getParameter("userName");
 
             User userInfo=(userName==null||userName.length()<1)?userTemp:new User(userName);
             if(userInfo==null||!userInfo.isExist()){
-                response.sendRedirect("/");
+                response.sendRedirect(request.getContextPath());
                 return;
             }
             request.setAttribute("userInfo",userInfo);
@@ -47,17 +47,17 @@
                     <font>Personal rating: <font style="font-size:1.3em"><%=userInfo.getInt("rating")%></font></font>
                 </div>
                 <div class="someInfo">
-                    <img src="/images/smallPic/codeforces.jpg" height="15" alt="codeforces">
+                    <img src="${rootPath}/images/smallPic/codeforces.jpg" height="15" alt="codeforces">
                     <font>codeforces: <a href="<%=codeforcesAdrr%>/profile/<%=userInfo.getString("codeforcesid")%>" target="_blank"><%=userInfo.getString("codeforcesid")%></a></font>
                     <font>&nbsp;(rating: <%=userInfo.getInt("codeforcesRating")%>)</font>
                 </div>
                 <div class="someInfo">
-                    <img src="/images/smallPic/newcoder.jpg" height="15" alt="牛客">
+                    <img src="${rootPath}/images/smallPic/newcoder.jpg" height="15" alt="牛客">
                     <font>newcoder: <a href="<%=newcoderAddr%>/acm/contest/rating-index?searchUserName=<%=userInfo.getString("newcoderid")%>" target="_blank"><%=userInfo.getString("newcoderid")%></a></font>
                     <font>&nbsp;(rating: <%=userInfo.getInt("newcoderRating")%>)</font>
                 </div>
                 <div class="someInfo">
-                    <img src="/images/smallPic/atcoder.jpg" height="15" alt="AtCoder">
+                    <img src="${rootPath}/images/smallPic/atcoder.jpg" height="15" alt="AtCoder">
                     <font>atcoder: <a href="<%=atcoderAddr%>/user/<%=userInfo.getString("atcoderid")%>" target="_blank"><%=userInfo.getString("atcoderid")%></a></font>
                     <font>&nbsp;(rating: <%=userInfo.getInt("atcoderRating")%>)</font>
                 </div>

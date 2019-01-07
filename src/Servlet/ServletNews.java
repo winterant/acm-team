@@ -56,7 +56,7 @@ public class ServletNews extends HttpServlet {
             sql=String .format("insert into news(publishTime) values('%s')",publishTime);
             if(mysql.update(sql)==0){
                 ret.put("result",false);
-                ret.put("msg","数据库插入失败");
+                ret.put("msg1","数据库插入失败 "+sql);
             }
             System.out.println("添加新闻："+sql);
             id=String.valueOf(mysql.queryFirst("SELECT LAST_INSERT_ID() id").get("id"));

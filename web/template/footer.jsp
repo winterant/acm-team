@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="footContainer">
     <p style="margin-bottom: 4px">
-        <a href="${rootPath}/" target="_parent"><%=homeName%></a>
-        <font style="color: #ffffff">&nbsp;|&nbsp;</font>
-        <a href="http://icpc.ldu.edu.cn" target="_blank">LDU Online Judge</a>
-        <font style="color: #ffffff">&nbsp;|&nbsp;</font>
-        <a href="https://blog.csdn.net/winter2121" target="_blank">雪的期许</a>
-        <font style="color: #ffffff">&nbsp;|&nbsp;</font>
-        <a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备18051516号</a>
+        <%--<a href="${rootPath}" target="_parent"><%=homeName%></a>--%>
+        <%--<font style="color: #ffffff">&nbsp;|&nbsp;</font>--%>
+        <%--<a href="http://icpc.ldu.edu.cn" target="_blank">LDU Online Judge</a>--%>
+        <%--<font style="color: #ffffff">&nbsp;|&nbsp;</font>--%>
+        <%--<a href="https://blog.csdn.net/winter2121" target="_blank">雪的期许</a>--%>
+        <%--<font style="color: #ffffff">&nbsp;|&nbsp;</font>--%>
+        <%--<a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备18051516号</a>--%>
     </p>
 
     <div id="time1">
@@ -23,20 +23,25 @@
 
     <div>
         <p style="margin: 5px;color: white">
-            Copyright © 2018 <%=homeName%> All rights reserved.
+            Copyright © 2019 <%=homeName%> All rights reserved.
         </p>
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/template/js/jquery-3.3.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/template/js/ajax.js"></script>
-<script src="${pageContext.request.contextPath}/template/js/menu.js"></script>
-<script src="${pageContext.request.contextPath}/template/js/action.js"></script>
+<script src="${rootPath}/template/js/jquery-3.3.1.min.js"></script>
+<script src="${rootPath}/template/js/ajax.js"></script>
+<script src="${rootPath}/template/js/menu.js"></script>
+<script src="${rootPath}/template/js/action.js"></script>
 <script type="text/javascript">
+
+    //设置隐藏div撑起页脚高度
     var h=document.getElementById("footContainer").offsetHeight;
     var hideDiv=document.createElement("div");
     hideDiv.style.height=h+"px";
     document.body.appendChild(hideDiv);
+
+    //设置背景图片
+    $('body').css("background-image","url('${rootPath}/images/background/StarSky.jpg')");
 
     var nowTime=function () {
         document.getElementById('time1').innerHTML='Server time: '+formatDate(new Date());

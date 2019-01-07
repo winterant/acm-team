@@ -57,7 +57,7 @@
                         <%
                             if(1==(int)i.get("isUser")){
                         %>
-                            <a href="/profilePage.jsp?userName=<%=i.get("author")%>"><%=i.get("author")%></a>
+                            <a href="${rootPath}/profilePage.jsp?userName=<%=i.get("author")%>"><%=i.get("author")%></a>
                         <%}else{%>
                         <%=i.get("author")%>
                         <%}%>

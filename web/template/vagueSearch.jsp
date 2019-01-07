@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="search">
-    <form method="get" action="<%=request.getServletPath()%>">
+    <form method="get" action="<%=request.getRequestURI()%>">
         <input class="form-control-input" type="text" name="keyWords" placeholder="输入关键字查找">
         <button class="form-control" type="submit">查找</button>
     </form>

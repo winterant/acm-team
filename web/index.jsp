@@ -28,7 +28,7 @@
 
         <%-- 主页区域 --%>
         <div class="homeContainer">
-            <div class="homeNotice homeRightMod">
+            <div class="homeNotice">
                 <div style="position: relative">
                     <h1 style="margin-left:15px;margin-bottom:0;color: #00b708">${notice.title}</h1>
                     <c:if test="${user!=null&&user.userMap.power>0}">
@@ -38,11 +38,6 @@
                     </c:if>
                 </div>
 
-                <div class="newsReadInfo hide" style="text-align: center;">
-                    <td>作者：[ <a href="/profilePage.jsp?userName=${notice.author}">${notice["author"]}</a> ]</td>
-                    <td>时间：[ ${notice["publishTime"].toString().substring(0,19)} ]</td>
-                    <td>浏览：[ ${notice.lookCount} ]</td>
-                </div>
                 <hr>
                 <div class="mainText" style="width: 90%;margin:10px auto;text-align: left">
                     <p>${notice.mainText}</p>

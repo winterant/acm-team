@@ -67,7 +67,7 @@
                             <c:if test="${item.identity==2}">
                                 <tr id="member${item.id}">
                                     <td><%=++step0%></td>
-                                    <td><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
+                                    <td><a href="${rootPath}/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td>
                                         <c:if test="${fn:indexOf(item.blog, 'http')!=-1}">
                                             <a href="${item.blog}" target="_blank">Ta的博客</a>
@@ -90,7 +90,7 @@
                             <c:if test="${item.identity==1}">
                                 <tr id="member${item.id}">
                                     <td><%=++step1%></td>
-                                    <td class="oneline"><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
+                                    <td class="oneline"><a href="${rootPath}/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td class="oneline">${item.grade}级</td>
                                     <td class="oneline">${item.major}</td>
                                     <td class="oneline">
@@ -115,7 +115,7 @@
                             <c:if test="${item.identity==0}">
                                 <tr id="member${item.id}">
                                     <td><%=++step2%></td>
-                                    <td class="oneline" class="oneline"><a href="/second/member.jsp?mid=${item.id}">${item.name}</a></td>
+                                    <td class="oneline" class="oneline"><a href="${rootPath}/second/member.jsp?mid=${item.id}">${item.name}</a></td>
                                     <td class="oneline">${item.grade}级</td>
                                     <td class="oneline">${item.major}</td>
                                     <td class="oneline">
@@ -134,7 +134,7 @@
             </div>
 
             <div style="margin:0 auto;width: 80%;">
-                <p>队员填报信息请点击<a href="/second/newMember.jsp" style="font-size: 1.5em">这里</a> ！</p>
+                <p>队员填报信息请点击<a href="${rootPath}/second/newMember.jsp" style="font-size: 1.5em">这里</a> ！</p>
             </div>
 
         </div>

@@ -33,7 +33,7 @@
         if(userTemp!=null&&userTemp.getInt("power")>0&&!member.isEmpty()){
             //编辑
             request.setAttribute("edi",true);
-            member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),"/images/smallPic/defaultphoto.jpg"));
+            member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),request.getContextPath()+"/images/smallPic/defaultphoto.jpg"));
             request.setAttribute("member",member);
         }else{
             request.setAttribute("edi",false);
@@ -96,7 +96,7 @@
                                 <td class="td1">照片：</td>
                                 <td>
                                     <div style="width: 30%;cursor: pointer;" id="showMemberPhoto" onclick="$('#memberPhoto').click()" title="更换照片">
-                                        <img id="memberImg" width="100%" src="/images/smallPic/defaultphoto.jpg" alt="">
+                                        <img id="memberImg" width="100%" src="${rootPath}/images/smallPic/defaultphoto.jpg" alt="">
                                     </div>
                                     <input id="fileid" type="text" name="fileid" hidden>
                                     <input id="memberPhoto" type="file" name="photo" onchange="memberAddPhoto()" hidden>
@@ -125,7 +125,7 @@
 <script type="text/javascript">
     var E = window.wangEditor;
     var editor = new E('#weditor');
-    editor.customConfig.uploadImgServer = '/ServletUpload?type=newsImg';
+    editor.customConfig.uploadImgServer = rootPath+'/ServletUpload?type=newsImg';
     editor.customConfig.uploadImgMaxSize=10*1024*1024;
     editor.customConfig.uploadImgHooks = {
         before: function (xhr, editor, files) {
@@ -188,7 +188,7 @@
         $('textarea[name=introduce]').val(editor.txt.html())
         $.ajax({
             type:"POST",
-            url:"/ServletMember",
+            url:rootPath+"/ServletMember",
             dataType:'json',
             data:$('#'+id).serialize()+"&"+$.param({"type":${edi}?"update":"add"}),
             success:function (res) {
@@ -214,7 +214,7 @@
         formData.append('type','memberPhoto');
         $.ajax({
             type:'POST',
-            url:'/ServletUpload',
+            url:rootPath+'/ServletUpload',
             dataType:'json',
             // contentType:"application/javascript; charset=utf-8",
             data:formData,

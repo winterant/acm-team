@@ -21,7 +21,7 @@
 <%
     User user= (User) session.getAttribute("user");
     if(user==null||!user.isExist()||user.getInt("power")==0){
-        response.sendRedirect("/"); //不是管理员将被送回主页
+        response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
         return;
     }
 %>
@@ -88,7 +88,7 @@
                         </td>
                         <td align="center">
                             <c:if test="${user.userMap.power>item.power}">
-                                [<a class="oneline" href="/second/userModifyPage.jsp?userName=${item.userName}" title="修改信息">修改</a>]
+                                [<a class="oneline" href="${rootPath}/second/userModifyPage.jsp?userName=${item.userName}" title="修改信息">修改</a>]
                                 [<a class="oneline" href="javascript:if(confirm('确定删除该用户吗?'))deleteUser('${item.userName}')" title="永久删除该用户">删除</a>]
                             </c:if>
                         </td>

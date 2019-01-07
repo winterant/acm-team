@@ -23,7 +23,7 @@
                 User user= (User) session.getAttribute("user");
                 if (user == null||!user.isExist()) {
                     if(user!=null&&!user.isExist())session.removeAttribute("user"); //无效用户
-                    response.sendRedirect("/");
+                    response.sendRedirect(request.getContextPath());
                 }else{
                     int alow= user.getInt("alowModify");
 

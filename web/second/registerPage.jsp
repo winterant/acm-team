@@ -26,7 +26,7 @@
     <%
         User user= (User) session.getAttribute("user");
         if(user!=null&&user.isExist()){ //已登录，跳转到主页
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath());
             return;
         }
     %>

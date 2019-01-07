@@ -28,10 +28,10 @@
         Map member=mysql.queryFirst(sql);
         if(member==null||(member).isEmpty()){
             out.print("<script>alert('成员不存在或未审核');</script>");
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath());
             return;
         }
-        member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),"/images/smallPic/defaultphoto.jpg"));
+        member.put("photoPath", FilePath.getFilePath((Integer) member.get("photo"),request.getContextPath()+"/images/smallPic/defaultphoto.jpg"));
         request.setAttribute("member",member);
     %>
 

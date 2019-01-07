@@ -88,7 +88,7 @@
         <div>
             <div id="showNews" class="prizeShowNews">
                 <a href="javascript:goToTop()" class="backA">返回顶部</a>
-                <h1 id="ptitle" style="margin: 0;text-align: center"></h1>
+                <h1 id="ptitle" style="margin: 0 7%;text-align: center"></h1>
                 <hr style="margin: 0">
                 <div id="ptext"></div>
             </div>
@@ -109,7 +109,7 @@
     function showNews(newsid) {
         $.ajax({
             type:"POST",
-            url:"/ServletNews",
+            url:rootPath+"/ServletNews",
             dataType:"json",
             data:{
                 type:"query",

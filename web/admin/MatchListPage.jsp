@@ -18,7 +18,7 @@
 <%
     User user= (User) session.getAttribute("user");
     if(user==null||!user.isExist()||user.getInt("power")==0){
-        response.sendRedirect("/"); //不是管理员将被送回主页
+        response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
     }
     SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
     request.setAttribute("matchName",matchName);
@@ -119,7 +119,7 @@
                 <c:forEach var="item" items="${matches}" varStatus="j">
                     <tr id="match${j.index}">
                         <td>${item.id}</td>
-                        <td><a href="/second/newsPage.jsp?nid=${item.newsid}" target="_blank">${item.title}</a></td>
+                        <td><a href="${rootPath}/second/newsPage.jsp?nid=${item.newsid}" target="_blank">${item.title}</a></td>
 
                         <td>${item.date}</td>
                         <td>

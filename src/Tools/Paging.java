@@ -213,7 +213,7 @@ public class Paging {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String path=request.getServletPath();
+        String path=request.getRequestURI();
         path+="?";
         int j=0;
         for(String key:nextArgs.keySet()){

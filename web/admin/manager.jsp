@@ -17,7 +17,7 @@
     <%
         User user= (User) session.getAttribute("user");
         if(user==null||!user.isExist()||user.getInt("power")==0){
-            response.sendRedirect("/");
+            response.sendRedirect(request.getContextPath());
         }
     %>
     <%@include file="/template/header.jsp"%>

@@ -14,11 +14,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/template/headTag.jsp"%>
+    <%@include file="template/headTag.jsp"%>
     <title><%=homeName%>-排名</title>
 </head>
 <body>
-    <%@include file="/template/header.jsp"%>
+    <%@include file="template/header.jsp"%>
     <div class="bigContainer">
         <div class="rank-list">
 
@@ -48,8 +48,8 @@
                 }
                 request.setAttribute("users",list);
             %>
-            <%@include file="/template/vagueSearch.jsp"%>
-            <%@include file="/template/pagingDiv.jsp"%>
+            <%@include file="template/vagueSearch.jsp"%>
+            <%@include file="template/pagingDiv.jsp"%>
 
             <div class="userTable">
                 <table class="table-list">
@@ -71,7 +71,7 @@
                         <tr>
                             <td>${item.rank}</td>
                             <td>
-                                <a class="${item.color}" href="/profilePage.jsp?userName=${item.userName}">
+                                <a class="${item.color}" href="${rootPath}/profilePage.jsp?userName=${item.userName}">
                                     ${item.userName}
                                 </a>
                             </td>
@@ -142,7 +142,7 @@
 
         </div>
     </div>
-    <%@include file="/template/footer.jsp"%>
+    <%@include file="template/footer.jsp"%>
 <script type="text/javascript">
     document.getElementById('rank').style.color="<%=homeSelectColor%>";
 </script>

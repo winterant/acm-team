@@ -22,7 +22,7 @@
     <%
         User user= (User) session.getAttribute("user");
         if(user==null||!user.isExist()||user.getInt("power")==0){
-            response.sendRedirect("/"); //不是管理员将被送回主页
+            response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
             return;
         }
         int nid= Changing.strToNumber(request.getParameter("nid"),0);
@@ -79,7 +79,7 @@
 
     var E = window.wangEditor;
     var editor = new E('#editor');
-    editor.customConfig.uploadImgServer = '/ServletUpload?type=newsImg';
+    editor.customConfig.uploadImgServer = rootPath+'/ServletUpload?type=newsImg';
     editor.customConfig.uploadImgMaxSize=10*1024*1024;
     editor.customConfig.uploadImgMaxLength = 50;
     editor.customConfig.uploadImgHooks = {

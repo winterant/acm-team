@@ -20,7 +20,7 @@
 <%
     User user= (User) session.getAttribute("user");
     if(user==null||!user.isExist()||user.getInt("power")==0){
-        response.sendRedirect("/"); //不是管理员将被送回主页
+        response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
         return;
     }
 %>
@@ -63,7 +63,7 @@
         %>
 
         <div class="search">
-            <form method="get" action="<%=request.getServletPath()%>">
+            <form method="get" action="<%=request.getRequestURI()%>">
                 <select id="statusSelect" name="status" class="selectStyle">
                     <option value="0">待审核</option>
                     <option value="1">已通过</option>
@@ -103,8 +103,8 @@
                         [<a href="javascript:memberStatus('${item.id}')" title="点击更改">${['待审核','已通过'].get(item.status)}</a>]
                     </td>
                     <td align="center">
-                        [<a class="oneline" href="/second/member.jsp?mid=${item.id}">详情</a>]
-                        [<a class="oneline" href="/second/newMember.jsp?mid=${item.id}">编辑</a>]
+                        [<a class="oneline" href="${rootPath}/second/member.jsp?mid=${item.id}">详情</a>]
+                        [<a class="oneline" href="${rootPath}/second/newMember.jsp?mid=${item.id}">编辑</a>]
                         [<a class="oneline" href="javascript:if(confirm('确定删除该条记录吗?'))memberDelete(${item.id})">删除</a>]
                     </td>
                 </tr>
@@ -125,7 +125,7 @@
     function memberStatus(mid) {
         $.ajax({
             type:"POST",
-            url:"/ServletMember",
+            url:rootPath+"/ServletMember",
             dataType:"json",
             data:{
                 mid:mid,
@@ -147,7 +147,7 @@
     function memberDelete(mid) {
         $.ajax({
             type:"POST",
-            url:"/ServletMember",
+            url:rootPath+"/ServletMember",
             dataType:"json",
             data:{
                 mid:mid,

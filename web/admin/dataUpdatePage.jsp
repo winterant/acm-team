@@ -18,7 +18,7 @@
 <%
     User user= (User) session.getAttribute("user");
     if(user==null||!user.isExist()||user.getInt("power")==0){
-        response.sendRedirect("/"); //不是管理员将被送回主页
+        response.sendRedirect(request.getContextPath()); //不是管理员将被送回主页
         return;
     }
 %>
@@ -59,7 +59,7 @@
         alert('已执行后台更新爬虫，请等待约5分钟再查看分数')
         $.ajax({
             type:"POST",
-            url:"/ServletReptile",
+            url:rootPath+"/ServletReptile",
             dataType:"json",
             data:{type:"updateCodeforcesRating"},
             success:function (result) {
@@ -74,7 +74,7 @@
         alert('已执行后台更新爬虫，请等待约5分钟再查看分数')
         $.ajax({
             type:"POST",
-            url:"/ServletReptile",
+            url:rootPath+"/ServletReptile",
             dataType:"json",
             data:{type:"updateNewcoderRating"},
             success:function (result) {
@@ -89,7 +89,7 @@
         alert('已执行后台更新爬虫，请等待约5分钟再查看分数')
         $.ajax({
             type:"POST",
-            url:"/ServletReptile",
+            url:rootPath+"/ServletReptile",
             dataType:'json',
             data:{type:"updateAtcoderRating"},
             success:function (ret) {
@@ -103,7 +103,7 @@
     function updateUpcContest() {
         $.ajax({
             type:"POST",
-            url:"/ServletReptile",
+            url:rootPath+"/ServletReptile",
             dataType:'json',
             data:{type:"updateUpcContest"},
             success:function (ret) {

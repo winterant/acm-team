@@ -25,7 +25,9 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}"></c:set>
 <link rel="shortcut icon" href="${rootPath}/images/background/favicon.ico" type="image/x-icon" />
 <link type="text/css" rel="stylesheet" href="${rootPath}/template/css/main.css">
-
+<script type="text/javascript">
+    var rootPath='${rootPath}';
+</script>
 
 <%!
     String homeName="icpc创新实验室";

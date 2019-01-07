@@ -138,7 +138,7 @@
 
                 <%--搜索条--%>
                 <div class="search" style="margin-right: 15%;">
-                    <form method="get" action="<%=request.getServletPath()%>">
+                    <form method="get" action="<%=request.getRequestURI()%>">
                         <%--按平台条件显示--%>
                         <select name="platform" id="platformSelect">
                             <option value="-1">All contests</option>

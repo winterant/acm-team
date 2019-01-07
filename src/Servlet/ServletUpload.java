@@ -65,7 +65,7 @@ public class ServletUpload extends HttpServlet {
                 // 处理不在表单中的字段，即文件
                 if (!item.isFormField()) {
                     String fileName = item.getName(); //获取上传的文件名
-                    String path="/upload/"+type+"/"+getSaveName(request,fileName);//上传文件的存放路径
+                    String path="/acmupload/"+type+"/"+getSaveName(request,fileName);//上传文件的存放路径
 
                     String realPath = getUploadHome(request)+path;//文件完整绝对路径
                     File storeFile = new File(realPath);

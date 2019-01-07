@@ -20,7 +20,7 @@
                     <li><a id="recent" href="${rootPath}/contestsPage.jsp">竞赛</a></li>
                     <li><a id="rank" href="${rootPath}/rankPage.jsp">排名</a></li>
                     <li><a id="members" href="${rootPath}/membersPage.jsp">团队</a></li>
-                    <li><a id="online" class="oneline" href="<%=lduojAddr%>/index.php">Online Judge</a></li>
+                    <li><a id="online" class="oneline" href="<%=lduojAddr%>">Online Judge</a></li>
                 </ul>
 
             </div>

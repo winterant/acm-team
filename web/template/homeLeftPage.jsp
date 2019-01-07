@@ -73,7 +73,7 @@
                 <div style="position: relative">
                     <div class="leftSmallTitle">留言板</div>
                     <div style="position: absolute;right: 0;bottom: 0">
-                        <a href="/second/speaksPage.jsp" style="font-size: 0.7em;">查看所有..</a>
+                        <a href="${rootPath}/second/speaksPage.jsp" style="font-size: 0.7em;">查看所有..</a>
                     </div>
                 </div>
                 <div id="dropShowSpeaks" class="dropShowSTH">
