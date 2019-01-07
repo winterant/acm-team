@@ -1,16 +1,18 @@
 package Tools;
 
 import Mysql.SQL;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public class FilePath {
-    public static String getPhotoPath(String userName){
+    public static String getPhotoPath(String userName, HttpServletRequest request){
         SQL mysql=new SQL();
         String sql= String.format("select path from files where id in" +
                 " (select max(fileid) from photoes where userName='%s')", userName);
 
         Map res=mysql.queryFirst(sql);
-        if(res.isEmpty())return "/images/smallPic/defaultphoto.jpg";//默认照片
+        if(res.isEmpty())return request.getContextPath()+"/images/smallPic/defaultphoto.jpg";//默认照片
         return res.get("path").toString();
     }
     public static String getFilePath(int fileid,String defaultPath){

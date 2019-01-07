@@ -82,7 +82,7 @@
             <%--begin of user photo--%>
             <div id="photo-div">
                 <div id="photo">
-                    <img id="userPhoto" width="100%" src="<%=FilePath.getPhotoPath(userInfo.getString("userName"))%>" alt="<%=userInfo.getString("userName")%>">
+                    <img id="userPhoto" width="100%" src="<%=FilePath.getPhotoPath(userInfo.getString("userName"),request)%>" alt="<%=userInfo.getString("userName")%>">
                 </div>
                 <c:if test="${userInfo.userMap.id==user.userMap.id}">
                     <div style="width: 60%;text-align: center;margin: 2% auto;">

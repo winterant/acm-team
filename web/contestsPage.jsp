@@ -217,7 +217,6 @@
                                 <td>
                                     <p style="margin:0;font-size: 1.05em;"><a href="${item.get('url')}" target="_blank">${item.get('title')}</a></p>
 
-                                    <%--<img src="images/smallPic/notice.jpg" style="height: 15px">--%>
                                     <font style="color: #5a5a5a;word-break:break-all;">
                                         ${item.mainText}
                                     </font>

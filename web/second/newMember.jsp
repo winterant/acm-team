@@ -13,15 +13,6 @@
 <head>
     <%@include file="/template/headTag.jsp"%>
     <title><%=homeName%></title>
-    <style type="text/css">
-        .container{
-            background-color: white;
-            border-radius: 4px;
-            overflow: hidden;
-            text-align: center;
-            min-height: 60%;
-        }
-    </style>
 </head>
 <body>
     <%@include file="/template/header.jsp"%>
