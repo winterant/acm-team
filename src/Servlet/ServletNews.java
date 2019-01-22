@@ -53,7 +53,7 @@ public class ServletNews extends HttpServlet {
 
 
         if(Changing.strToNumber(id)==0){  //编号为0，则为添加新的新闻，先插入
-            sql=String .format("insert into news(publishTime) values('%s')",publishTime);
+            sql=String .format("insert into news(publishTime,author) values('%s','%s')",publishTime,author);
             if(mysql.update(sql)==0){
                 ret.put("result",false);
                 ret.put("msg1","数据库插入失败 "+sql);
@@ -65,8 +65,8 @@ public class ServletNews extends HttpServlet {
         ret.put("nid",id);
 
         if("save".equals(type)){
-            sql=String.format("update news set title='%s',mainText='%s',author='%s',status='%s'"
-                    ,title,mainText,author,status);
+            sql=String.format("update news set title='%s',mainText='%s',status='%s'"
+                    ,title,mainText,status);
             if("true".equals(updateDate)){
                 sql+=",publishTime='"+publishTime+"'";
             }
