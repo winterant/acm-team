@@ -10,7 +10,6 @@ ACM程序设计实验室管理网站（jsp）<br>
     排名。根据用户的codeforces、atcoder、牛客用户名，使用htmlunit网络爬虫获取积分进行排名。
     成员。收集团队成员信息进行展示。
 
-# 以下先不要看，未纠正
 # 部署到windows10 IDEA
   ## 文件上传问题
   文件上传默认上传到项目的父目录(webapps)下的upload文件夹，这样的话前台访问不到，因此做一个映射。
@@ -23,16 +22,6 @@ ACM程序设计实验室管理网站（jsp）<br>
     数据库用户密码：iloveyou
   ## 数据库创建脚本
     /extends/mysql/winter.sql
-    
-  ## /web/template文件夹说明
-  此文件夹存放其他页面所有的公共成分。重要的有：
-  
-    headTag.jsp       所有页面所需的h5头部配置，以及所有页面公用的变量等。
-    header.jsp        页面头部主菜单
-    footer.jsp        页脚
-    homeLeftPage.jsp  主页左侧div
-    pagingDiv.jsp     翻页div
-    vagueSearch.jsp   模糊搜索div
     
   ## 项目所需的jar包
   全部在/extends/jar/* 备份
